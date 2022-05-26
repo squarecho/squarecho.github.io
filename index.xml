@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>蘭陵N散記</title>
-    <link>http://lanlingzi.cn/</link>
+    <link>http://squarecho.github.io/</link>
     <description>Recent content on 蘭陵N散記</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language><atom:link href="http://lanlingzi.cn/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-CN</language><atom:link href="http://squarecho.github.io/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
