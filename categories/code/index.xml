@@ -13,7 +13,12 @@
       <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://squarecho.github.io/post/copy/</guid>
-      <description>Golang 拷貝技術整理 淺拷貝 僅複製記憶體位置資訊,若修改則會連動修改 深拷貝 複製真實值,共會有兩份記憶體位置,若修改則分別修改 性質整理 基本型別 string, int, float64, bool</description>
+      <description>&lt;h1 id=&#34;golang-拷貝技術整理&#34;&gt;Golang 拷貝技術整理&lt;/h1&gt;
+&lt;h2 id=&#34;淺拷貝&#34;&gt;淺拷貝&lt;/h2&gt;
+&lt;p&gt;僅複製記憶體位置資訊,若修改則會連動修改&lt;/p&gt;
+&lt;h2 id=&#34;深拷貝&#34;&gt;深拷貝&lt;/h2&gt;
+&lt;p&gt;複製真實值,共會有兩份記憶體位置,若修改則分別修改&lt;/p&gt;
+&lt;p&gt;`&lt;/p&gt;</description>
     </item>
     
   </channel>

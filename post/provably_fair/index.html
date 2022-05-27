@@ -170,16 +170,16 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">閱讀:</span>
-<span class="leancloud-visitors-count">312 字 ~1分鐘</span>
+<span class="leancloud-visitors-count">335 字 ~1分鐘</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
       <h1 id="公正雜湊驗證機制">公正雜湊驗證機制</h1>
-<p>參考競品: Bitsler provably-fair
-<a href="https://www.bitsler.com/en/provably-fair/seeds">https://www.bitsler.com/en/provably-fair/seeds</a></p>
-<h2 id="技術簡述">技術簡述</h2>
-<p>根據server seed與client seed產生對應的hash鏈，隨機數皆於鏈上取得，取得方式有公告且server seed有事先給玩家雜湊過的值可自行驗證。</p>
+<h2 id="簡述">簡述</h2>
+<p>根據server seed與client seed產生對應的hash鏈，使用該Hash鏈產生遊戲結果。
+Server seed於下注前會先給玩家其SHA256的雜湊值，供玩家驗證用。
+此機制可以使玩家有公正且可驗證的信任感。</p>
 <h2 id="驗證需求">驗證需求</h2>
 <table>
 <thead>
@@ -207,6 +207,10 @@
 </tr>
 </tbody>
 </table>
+<p>`</p>
+<p>`</p>
+<h2 id="參考競品-bitsler-provably-fair">參考競品: Bitsler provably-fair</h2>
+<p><a href="https://www.bitsler.com/en/provably-fair/seeds">https://www.bitsler.com/en/provably-fair/seeds</a></p>
 <h2 id="技術細節">技術細節</h2>
 <ol>
 <li>Server Seed的Hash使用 SHA256</li>
@@ -378,8 +382,9 @@
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
-    <li><a href="#技術簡述">技術簡述</a></li>
+    <li><a href="#簡述">簡述</a></li>
     <li><a href="#驗證需求">驗證需求</a></li>
+    <li><a href="#參考競品-bitsler-provably-fair">參考競品: Bitsler provably-fair</a></li>
     <li><a href="#技術細節">技術細節</a></li>
     <li><a href="#玩家驗證重點">玩家驗證重點</a></li>
     <li><a href="#根據clientseed-nonce-serverseed所產生的公正隨機數邏輯">根據$clientSeed $nonce $serverSeed所產生的公正隨機數邏輯</a></li>

@@ -13,7 +13,39 @@
       <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://squarecho.github.io/post/provably_fair/</guid>
-      <description>公正雜湊驗證機制 參考競品: Bitsler provably-fair https://www.bitsler.com/en/provably-fair/seeds 技術簡述 根據server seed與client seed產生對應的hash鏈，隨機數皆於鏈上取得，取得方式有公</description>
+      <description>&lt;h1 id=&#34;公正雜湊驗證機制&#34;&gt;公正雜湊驗證機制&lt;/h1&gt;
+&lt;h2 id=&#34;簡述&#34;&gt;簡述&lt;/h2&gt;
+&lt;p&gt;根據server seed與client seed產生對應的hash鏈，使用該Hash鏈產生遊戲結果。
+Server seed於下注前會先給玩家其SHA256的雜湊值，供玩家驗證用。
+此機制可以使玩家有公正且可驗證的信任感。&lt;/p&gt;
+&lt;h2 id=&#34;驗證需求&#34;&gt;驗證需求&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;欄位&lt;/th&gt;
+&lt;th&gt;意義&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Server Seed (hashed)&lt;/td&gt;
+&lt;td&gt;於下注前給玩家&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Server Seed (revealed)&lt;/td&gt;
+&lt;td&gt;玩家更換 Client Seed 的時候再給玩家&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Client Seed&lt;/td&gt;
+&lt;td&gt;玩家可以自行更新&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Last/specific nonce&lt;/td&gt;
+&lt;td&gt;隨下注次數增加&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;`&lt;/p&gt;</description>
     </item>
     
   </channel>
