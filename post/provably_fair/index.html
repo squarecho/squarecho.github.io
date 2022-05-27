@@ -5,14 +5,14 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>code - 遊戲數學平方</title>
+  <title>公正雜湊驗證機制 - 遊戲數學平方</title>
   
   <meta name="keywords" content="遊戲數學平方,團對,思考,筆記,技術,分享,Golang">
   
-  <meta property="og:title" content="code">
+  <meta property="og:title" content="公正雜湊驗證機制">
   <meta property="og:site_name" content="遊戲數學平方">
   <meta property="og:image" content="/img/author.jpg">
-  <meta name="title" content="code - 遊戲數學平方" />
+  <meta name="title" content="公正雜湊驗證機制 - 遊戲數學平方" />
   
   <meta name="description" content="遊戲數學平方 | 部落格 | 遊戲 | 數學 | 後端 | Golang">
   <link rel="shortcut icon" href="https://squarecho.github.io/img/logo.png" />
@@ -20,6 +20,7 @@
   <link rel="apple-touch-icon-precomposed" href="https://squarecho.github.io/img/logo.png" />
   <link href="https://squarecho.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
   
+  <link href="https://squarecho.github.io/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
   <link href="https://squarecho.github.io/css/main.css" rel="stylesheet" type="text/css" />
   <link href="https://squarecho.github.io/css/syntax.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" id="hexo.configuration">
@@ -33,7 +34,7 @@
   </script>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage" lang="zh-Hans">
-<div class="container one-collumn sidebar-position-left   ">
+<div class="container one-collumn sidebar-position-left page-home  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="https://schema.org/WPHeader">
@@ -126,71 +127,156 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-<section id="posts" class="posts-collapse">
-<div class="collection-title">
-    <h2 >code
-    <small>分類</small>
-    </h2>
-</div>
-
-<div class="collection-title">
-  <h2 class="archive-year motion-element" id="archive-year-2019">2019</h2>
-</div>
-
-  <article class="post post-type-normal }}" itemscope itemtype="https://schema.org/Article">
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
     <header class="post-header">
-      <h1 class="post-title">
-        <a class="post-title-link" href="https://squarecho.github.io/post/copy/" itemprop="url">
-            <span itemprop="name">Golang 拷貝技術整理</span>
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/post/provably_fair/" itemprop="url">
+          公正雜湊驗證機制
         </a>
       </h1>
-
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-07-03"
-              content="07-03" >
-          07-03
-        </time>
+        <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2022-02-03">
+    2022-02-03
+</time>
+</span>
+        
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+         <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">312 字 ~1分鐘</span>
+</span>
       </div>
     </header>
+    <div class="post-body" itemprop="articleBody">
+      <h1 id="公正雜湊驗證機制">公正雜湊驗證機制</h1>
+<p>參考競品: Bitsler provably-fair
+<a href="https://www.bitsler.com/en/provably-fair/seeds">https://www.bitsler.com/en/provably-fair/seeds</a></p>
+<h2 id="技術簡述">技術簡述</h2>
+<p>根據server seed與client seed產生對應的hash鏈，隨機數皆於鏈上取得，取得方式有公告且server seed有事先給玩家雜湊過的值可自行驗證。</p>
+<h2 id="驗證需求">驗證需求</h2>
+<table>
+<thead>
+<tr>
+<th>欄位</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Server Seed (hashed)</td>
+<td>於下注前給玩家</td>
+</tr>
+<tr>
+<td>Server Seed (revealed)</td>
+<td>玩家更換 Client Seed 的時候再給玩家</td>
+</tr>
+<tr>
+<td>Client Seed</td>
+<td>玩家可以自行更新</td>
+</tr>
+<tr>
+<td>Last/specific nonce</td>
+<td>隨下注次數增加</td>
+</tr>
+</tbody>
+</table>
+<h2 id="技術細節">技術細節</h2>
+<ol>
+<li>Server Seed的Hash使用 SHA256</li>
+<li>公正的隨機數產生由 $clientSeed $nonce $serverSeed 產生的Hash字串中取得</li>
+</ol>
+<h2 id="玩家驗證重點">玩家驗證重點</h2>
+<ol>
+<li>server事先給的Hashed-ServerSeed與事後給的serverSeed是否符合 SHA256的驗證</li>
+</ol>
+<h2 id="根據clientseed-nonce-serverseed所產生的公正隨機數邏輯">根據$clientSeed $nonce $serverSeed所產生的公正隨機數邏輯</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$seed<span style="color:#f92672">=</span><span style="color:#a6e22e">hash_hmac</span>(<span style="color:#e6db74">&#39;sha512&#39;</span>,$clientSeed <span style="color:#f92672">.</span><span style="color:#e6db74">&#39;,&#39;</span><span style="color:#f92672">.</span> $nonce, $serverSeed);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$offset<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">do</span>{
+</span></span><span style="display:flex;"><span>  $number<span style="color:#f92672">=</span><span style="color:#a6e22e">substr</span>($seed,$offset,<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>  $number<span style="color:#f92672">=</span><span style="color:#a6e22e">hexdec</span>($number);
+</span></span><span style="display:flex;"><span>  $offset<span style="color:#f92672">+=</span><span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span>($number <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">999999</span>);
+</span></span><span style="display:flex;"><span>$luckyNumber <span style="color:#f92672">=</span> ($number <span style="color:#f92672">%</span> <span style="color:#ae81ff">10000</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">100</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> $luckyNumber;
+</span></span></code></pre></div>
+    </div>
+    <footer class="post-footer">
+      
+ 
+<div class="post-tags">     
+     
+    <a href="https://squarecho.github.io/tags/hash" rel="tag" title="hash">#hash#</a>
+    
+    <a href="https://squarecho.github.io/tags/game" rel="tag" title="game">#game#</a>
+    
+</div>
+
+
+
+      <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+        
+        <a href="https://squarecho.github.io/about/" rel="next" title="關於遊戲數學平方">
+            <i class="fa fa-chevron-left"></i> 關於遊戲數學平方
+        </a>
+        
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+        
+        <a href="https://squarecho.github.io/post/copy/" rel="prev" title="Golang 拷貝技術整理">
+            Golang 拷貝技術整理 <i class="fa fa-chevron-right"></i>
+        </a>
+        
+    </div>
+</div>
+      <div class="post-nav">
+    <div
+        style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+        <div>
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/"><img alt="創用 CC 授權條款"
+                    style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />
+            本站內容由<a xmlns:cc="https://creativecommons.org/ns#" href="https://squarecho.github.io/"
+                property="cc:attributionName" rel="cc:attributionURL">Square Cho</a>製作，以<a rel="license"
+                href="https://creativecommons.org/licenses/by-nc/4.0/">創用CC 姓名標示-非商業性 4.0 國際 授權條款</a>釋出。<br />
+            若有商業需求請來信聯絡 b98507006@gmail.com
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+    </footer>
   </article>
-
-
- </section>
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-  
-  
-
-
-
-<nav class="pagination">
-    
-    
-        
-        
-          <span class="page-number current">1</span>
-        
-        
-    
-    
-</nav>
-
+</section>
 
           </div>
         </div>
@@ -204,7 +290,16 @@
 <aside id="sidebar" class="sidebar">
   <div class="sidebar-inner">
 
-    <section class="site-overview sidebar-panel  sidebar-panel-active ">
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目錄
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站點概覽
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="https://schema.org/Person">
     <img class="site-author-image" itemprop="image" src="https://squarecho.github.io/img/author.png" alt="Square Cho" />
     <p class="site-author-name" itemprop="name">Square Cho</p>
@@ -238,13 +333,6 @@
     </div>
 </nav>
       
-<div class="feed-link motion-element">
-<a href="https://squarecho.github.io/categories/code/index.xml" rel="alternate" type="application/rss+xml" target="_blank">
-    <i class="fa fa-rss"></i>
-    RSS 訂閱
-</a>
-</div>
-
       
 <div class="links-of-author motion-element">
     
@@ -286,6 +374,20 @@
 
     </section>
     
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#技術簡述">技術簡述</a></li>
+    <li><a href="#驗證需求">驗證需求</a></li>
+    <li><a href="#技術細節">技術細節</a></li>
+    <li><a href="#玩家驗證重點">玩家驗證重點</a></li>
+    <li><a href="#根據clientseed-nonce-serverseed所產生的公正隨機數邏輯">根據$clientSeed $nonce $serverSeed所產生的公正隨機數邏輯</a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
   </div>
 </aside>
 
@@ -330,16 +432,18 @@
 <script type="text/javascript" src="https://squarecho.github.io/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
 <script src="https://squarecho.github.io/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
+<script src="https://squarecho.github.io/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
 <script type="text/javascript" src="https://squarecho.github.io/js/utils.js"></script>
 <script type="text/javascript" src="https://squarecho.github.io/js/motion.js"></script>
 <script type="text/javascript" src="https://squarecho.github.io/js/affix.js"></script>
 <script type="text/javascript" src="https://squarecho.github.io/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="https://squarecho.github.io/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://squarecho.github.io/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://squarecho.github.io/js/post-details.js"></script>
+<script type="text/javascript" src="https://squarecho.github.io/js/toc.js"></script>
 
-<script type="text/javascript" id="motion.page.archive">
-  $('.archive-year').velocity('transition.slideLeftIn');
-</script>
+<script type="text/javascript" src="https://squarecho.github.io/js/bootstrap.js"></script>
 
 <script type="text/javascript" src="https://squarecho.github.io/js/search.js"></script>
 <script type="text/x-mathjax-config">
