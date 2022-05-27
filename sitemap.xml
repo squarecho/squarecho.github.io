@@ -1,6 +1,54 @@
 <search>
     
      <entry>
+        <title>code1</title>
+        <url>https://squarecho.github.io/post/code1/</url>
+        <categories>
+          <category>code</category>
+        </categories>
+        <tags>
+          <tag>xxx</tag>
+        </tags>
+        <content type="html"> </content>
+    </entry>
+    
+     <entry>
+        <title>game1</title>
+        <url>https://squarecho.github.io/post/game1/</url>
+        <categories>
+          <category>game</category>
+        </categories>
+        <tags>
+          <tag>xxx</tag>
+        </tags>
+        <content type="html"> </content>
+    </entry>
+    
+     <entry>
+        <title>math1</title>
+        <url>https://squarecho.github.io/post/math1/</url>
+        <categories>
+          <category>math</category>
+        </categories>
+        <tags>
+          <tag>xxx</tag>
+        </tags>
+        <content type="html"> </content>
+    </entry>
+    
+     <entry>
+        <title>note1</title>
+        <url>https://squarecho.github.io/post/note1/</url>
+        <categories>
+          <category>note</category>
+        </categories>
+        <tags>
+          <tag>xxx</tag>
+        </tags>
+        <content type="html"> </content>
+    </entry>
+    
+     <entry>
         <title>xxxx</title>
         <url>https://squarecho.github.io/post/first/</url>
         <categories>
