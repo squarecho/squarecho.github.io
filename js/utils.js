@@ -50,7 +50,7 @@ NexT.utils = NexT.$u = {
       var scrollTop = $(window).scrollTop();
       var contentVisibilityHeight = NexT.utils.getContentVisibilityHeight();
       var scrollPercent = (scrollTop) / (contentVisibilityHeight);
-      var scrollPercentRounded = Math.round(scrollPercent*100);
+      var scrollPercentRounded = Math.round(scrollPercent * 100);
       var scrollPercentMaxed = (scrollPercentRounded > 100) ? 100 : scrollPercentRounded;
       $('#scrollpercent>span').html(scrollPercentMaxed);
     });
@@ -62,14 +62,14 @@ NexT.utils = NexT.$u = {
 
   getContentVisibilityHeight: function () {
     var docHeight = $('#content').height(),
-        winHeight = $(window).height(),
-        contentVisibilityHeight = (docHeight > winHeight) ? (docHeight - winHeight) : ($(document).height() - winHeight);
+      winHeight = $(window).height(),
+      contentVisibilityHeight = (docHeight > winHeight) ? (docHeight - winHeight) : ($(document).height() - winHeight);
     return contentVisibilityHeight;
   },
 
   /**
    * Transform embedded video to support responsive layout.
-   * @see http://toddmotto.com/fluid-and-responsive-youtube-and-vimeo-videos-with-fluidvids-js/
+   * @see https://toddmotto.com/fluid-and-responsive-youtube-and-vimeo-videos-with-fluidvids-js/
    */
   embeddedVideoTransformer: function () {
     var $iframes = $('iframe');
@@ -82,7 +82,7 @@ NexT.utils = NexT.$u = {
       'music.163.com',
       'www.tudou.com'
     ];
-    var pattern = new RegExp( SUPPORTED_PLAYERS.join('|') );
+    var pattern = new RegExp(SUPPORTED_PLAYERS.join('|'));
 
     $iframes.each(function () {
       var iframe = this;
@@ -123,7 +123,7 @@ NexT.utils = NexT.$u = {
         if (this.src.search('music.163.com') > 0) {
           newDimension = getDimension($iframe);
           var shouldRecalculateAspect = newDimension.width > oldDimension.width ||
-                                        newDimension.height < oldDimension.height;
+            newDimension.height < oldDimension.height;
 
           // 163 Music Player has a fixed height, so we need to reset the aspect radio
           if (shouldRecalculateAspect) {

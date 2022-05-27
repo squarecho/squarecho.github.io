@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>遊戲數學平方</title>
-    <link>http://squarecho.github.io/</link>
+    <link>https://squarecho.github.io/</link>
     <description>Recent content on 遊戲數學平方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Fri, 03 Feb 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://squarecho.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Feb 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>關於遊戲數學平方</title>
-      <link>http://squarecho.github.io/about/</link>
+      <link>https://squarecho.github.io/about/</link>
       <pubDate>Thu, 26 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://squarecho.github.io/about/</guid>
+      <guid>https://squarecho.github.io/about/</guid>
       <description>歡迎來到遊戲數學平方 Welcome to $Game Math^2$. 期許此地可以成為對遊戲有熱情的交流之地。 內容 領域：遊戲業、加密貨幣。 技能：數學技巧、產業經驗、程式碼分享。 聲明 本</description>
     </item>
     
     <item>
       <title>xxxx</title>
-      <link>http://squarecho.github.io/post/first/</link>
+      <link>https://squarecho.github.io/post/first/</link>
       <pubDate>Fri, 03 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://squarecho.github.io/post/first/</guid>
+      <guid>https://squarecho.github.io/post/first/</guid>
       <description></description>
     </item>
     
