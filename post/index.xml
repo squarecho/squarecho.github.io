@@ -81,6 +81,25 @@ $\Pi_{n=1}^N(\frac{365-n}{365}) = \frac{365}{365}\times\frac{365-1}{365}\times&a
     </item>
     
     <item>
+      <title>LoR蘑菇 - 陷阱卡抽取問題</title>
+      <link>https://squarecho.github.io/post/lor-teemo-mushroom/</link>
+      <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://squarecho.github.io/post/lor-teemo-mushroom/</guid>
+      <description>&lt;h1 id=&#34;lor蘑菇---陷阱卡抽取問題&#34;&gt;LoR蘑菇 - 陷阱卡抽取問題&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://squarecho.github.io/assets/img/teemo.png&#34; alt=&#34;teemo&#34; title=&#34;LoR提摩蘑菇展示&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;蘑菇陷阱卡說明&#34;&gt;蘑菇陷阱卡說明&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;蘑菇會隨機種在牌庫的其中一張牌&lt;/li&gt;
+&lt;li&gt;一張牌上可以有複數個蘑菇&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;命題&#34;&gt;命題&lt;/h2&gt;
+&lt;p&gt;給定一牌庫數量n,牌庫裡蘑菇總數量m
+求此次抽取的牌上共有幾個蘑菇？&lt;/p&gt;
+&lt;p&gt;`&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>常見遊戲道具強化機制-保底強化模型</title>
       <link>https://squarecho.github.io/post/guaranteed-strengthen/</link>
       <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
@@ -109,6 +128,15 @@ E_v &amp;amp;= \frac{1}{x} \cr
 &lt;p&gt;期望值=T次內期望值+T*(1-T次內成功機率)&lt;/p&gt;
 &lt;p&gt;$E_v=\frac{1-(1-x)^T (1+Tx)}{x}+T(1-x)^T$&lt;/p&gt;
 &lt;p&gt;`&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LoR遠征 - 雙淘汰賽制分析</title>
+      <link>https://squarecho.github.io/post/lor-arena-7wins/</link>
+      <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://squarecho.github.io/post/lor-arena-7wins/</guid>
+      <description>LoR遠征 - 雙淘汰賽制分析 規則 七勝出場 連續兩敗出場 挑戰第七勝時僅有一次敗局機會 每枚代幣共可參加兩場 兩場中成績較優者為獎勵發放條件 隱含條件 實力</description>
     </item>
     
     <item>
@@ -258,8 +286,15 @@ E_v &amp;amp;= \frac{1}{x} \cr
       
       <guid>https://squarecho.github.io/post/toollink/</guid>
       <description>&lt;h1 id=&#34;常用工具連結&#34;&gt;常用工具連結&lt;/h1&gt;
+&lt;h2 id=&#34;數學作圖&#34;&gt;數學作圖&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.geogebra.org/&#34;&gt;https://www.geogebra.org/&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.desmos.com/&#34;&gt;https://www.desmos.com/  &lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;2d作圖&#34;&gt;2D作圖&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://app.diagrams.net/&#34;&gt;https://app.diagrams.net/&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.canva.com/&#34;&gt;https://www.canva.com/&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;visa-匯率轉換&#34;&gt;VISA 匯率轉換&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.visa.com.tw/travel-with-visa/exchange-rate-calculator.html?fromCurr=TWD&amp;amp;toCurr=SGD&amp;amp;fee=0&amp;amp;utcConvertedDate=&amp;amp;exchangedate=03%2F21%2F2022&amp;amp;submitButton=%E8%A8%88%E7%AE%97%E5%8C%AF%E7%8E%87&#34;&gt;VISA 匯率轉換_TWDSGD&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.visa.com.tw/travel-with-visa/exchange-rate-calculator.html?fromCurr=TWD&amp;amp;toCurr=SGD&amp;amp;fee=0&amp;amp;utcConvertedDate=&amp;amp;exchangedate=03%2F21%2F2022&amp;amp;submitButton=%E8%A8%88%E7%AE%97%E5%8C%AF%E7%8E%87&#34;&gt;VISA 匯率轉換_TWDSGD&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.visa.com.tw/travel-with-visa/exchange-rate-calculator.html?fromCurr=SGD&amp;amp;toCurr=TWD&amp;amp;fee=0&amp;amp;utcConvertedDate=&amp;amp;exchangedate=03%2F21%2F2022&amp;amp;submitButton=%E8%A8%88%E7%AE%97%E5%8C%AF%E7%8E%87&#34;&gt;VISA 匯率轉換_SGDTWD&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;`&lt;/p&gt;</description>
     </item>
     
