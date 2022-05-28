@@ -1,6 +1,18 @@
 <search>
     
      <entry>
+        <title>LOVE</title>
+        <url>https://squarecho.github.io/post/mathlove/</url>
+        <categories>
+          <category>math</category>
+        </categories>
+        <tags>
+          <tag>hash</tag><tag>game</tag>
+        </tags>
+        <content type="html">  </content>
+    </entry>
+    
+     <entry>
         <title>公正雜湊驗證機制</title>
         <url>https://squarecho.github.io/post/provably_fair/</url>
         <categories>

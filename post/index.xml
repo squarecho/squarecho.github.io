@@ -8,6 +8,15 @@
     <language>zh-TW</language>
     <lastBuildDate>Thu, 03 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>LOVE</title>
+      <link>https://squarecho.github.io/post/mathlove/</link>
+      <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://squarecho.github.io/post/mathlove/</guid>
+      <description> </description>
+    </item>
+    
+    <item>
       <title>公正雜湊驗證機制</title>
       <link>https://squarecho.github.io/post/provably_fair/</link>
       <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
