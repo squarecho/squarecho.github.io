@@ -6,16 +6,30 @@
     <description>Recent content in hash on 遊戲數學平方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Thu, 03 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/tags/hash/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/tags/hash/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>公正雜湊驗證機制</title>
-      <link>https://squarecho.github.io/post/provably_fair/</link>
-      <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
+      <link>https://squarecho.github.io/math/provably_fair/</link>
+      <pubDate>Sat, 28 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://squarecho.github.io/post/provably_fair/</guid>
+      <guid>https://squarecho.github.io/math/provably_fair/</guid>
       <description>&lt;h1 id=&#34;公正雜湊驗證機制&#34;&gt;公正雜湊驗證機制&lt;/h1&gt;
 &lt;p&gt;根據雜湊不可逆原理達成的玩家信任機制。&lt;/p&gt;
-&lt;h2 id=&#34;機制概述&#34;&gt;機制概述&lt;/h2&gt;
+&lt;h2 id=&#34;玩家驗證角度看流程圖&#34;&gt;玩家驗證角度看流程圖&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sequenceDiagram
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Client-&amp;gt;&amp;gt;Server: Client_Seed_A
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Server-&amp;gt;&amp;gt;Client: Hashed_Server_Seed_A
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  loop Client Nonce++
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      Client-&amp;gt;&amp;gt;Client: Playing
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  end
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Client-&amp;gt;&amp;gt;Server: new Client_Seed_B
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Server-&amp;gt;&amp;gt;Client: Server_Seed_A, Hashed_Server_Seed_B
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Note left of Client: Check &amp;#34;Server_Seed_A&amp;#34; &amp;amp; &amp;#34;Hashed_Server_Seed_A&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  loop Client Nonce++
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      Client-&amp;gt;&amp;gt;Client: Verify By Server_Seed_A, Client_Seed_A
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  end
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;機制概述&#34;&gt;機制概述&lt;/h2&gt;
 &lt;p&gt;根據 &lt;strong&gt;伺服器種子(Server_Seed)&lt;/strong&gt; 與 &lt;strong&gt;玩家種子(Client_Seed)&lt;/strong&gt; 產生雜湊字串(SHA512)，根據其字串上取得該遊戲結果。&lt;br&gt;
 並於是前給予玩家 &lt;strong&gt;已經雜湊的伺服器種子(Hashed_Server_Seed)&lt;/strong&gt; ，使玩家可以事後與 &lt;strong&gt;伺服器種子(Server_Seed)&lt;/strong&gt; 做雜湊驗證，讓玩家確保沒有作弊的可能性。&lt;/p&gt;
 &lt;h2 id=&#34;驗證需求&#34;&gt;驗證需求&lt;/h2&gt;

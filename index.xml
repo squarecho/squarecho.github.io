@@ -6,25 +6,30 @@
     <description>Recent content in home on 遊戲數學平方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Thu, 03 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>關於遊戲數學平方</title>
-      <link>https://squarecho.github.io/about/</link>
-      <pubDate>Thu, 26 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://squarecho.github.io/about/</guid>
-      <description>歡迎來到遊戲數學平方 Welcome to $Game Math^2$. 期許此地可以成為對遊戲有熱情的交流之地。 內容 領域：遊戲業、加密貨幣。 技能：數學技巧、產業經驗、程式碼分享。 作者 Square</description>
-    </item>
-    
+    <lastBuildDate>Sat, 28 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>公正雜湊驗證機制</title>
-      <link>https://squarecho.github.io/post/provably_fair/</link>
-      <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
+      <link>https://squarecho.github.io/math/provably_fair/</link>
+      <pubDate>Sat, 28 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://squarecho.github.io/post/provably_fair/</guid>
+      <guid>https://squarecho.github.io/math/provably_fair/</guid>
       <description>&lt;h1 id=&#34;公正雜湊驗證機制&#34;&gt;公正雜湊驗證機制&lt;/h1&gt;
 &lt;p&gt;根據雜湊不可逆原理達成的玩家信任機制。&lt;/p&gt;
-&lt;h2 id=&#34;機制概述&#34;&gt;機制概述&lt;/h2&gt;
+&lt;h2 id=&#34;玩家驗證角度看流程圖&#34;&gt;玩家驗證角度看流程圖&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sequenceDiagram
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Client-&amp;gt;&amp;gt;Server: Client_Seed_A
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Server-&amp;gt;&amp;gt;Client: Hashed_Server_Seed_A
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  loop Client Nonce++
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      Client-&amp;gt;&amp;gt;Client: Playing
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  end
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Client-&amp;gt;&amp;gt;Server: new Client_Seed_B
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Server-&amp;gt;&amp;gt;Client: Server_Seed_A, Hashed_Server_Seed_B
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Note left of Client: Check &amp;#34;Server_Seed_A&amp;#34; &amp;amp; &amp;#34;Hashed_Server_Seed_A&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  loop Client Nonce++
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      Client-&amp;gt;&amp;gt;Client: Verify By Server_Seed_A, Client_Seed_A
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  end
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;機制概述&#34;&gt;機制概述&lt;/h2&gt;
 &lt;p&gt;根據 &lt;strong&gt;伺服器種子(Server_Seed)&lt;/strong&gt; 與 &lt;strong&gt;玩家種子(Client_Seed)&lt;/strong&gt; 產生雜湊字串(SHA512)，根據其字串上取得該遊戲結果。&lt;br&gt;
 並於是前給予玩家 &lt;strong&gt;已經雜湊的伺服器種子(Hashed_Server_Seed)&lt;/strong&gt; ，使玩家可以事後與 &lt;strong&gt;伺服器種子(Server_Seed)&lt;/strong&gt; 做雜湊驗證，讓玩家確保沒有作弊的可能性。&lt;/p&gt;
 &lt;h2 id=&#34;驗證需求&#34;&gt;驗證需求&lt;/h2&gt;
@@ -58,11 +63,20 @@
     </item>
     
     <item>
+      <title>關於遊戲數學平方</title>
+      <link>https://squarecho.github.io/about/</link>
+      <pubDate>Thu, 26 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://squarecho.github.io/about/</guid>
+      <description>歡迎來到遊戲數學平方 Welcome to $Game Math^2$. 期許此地可以成為對遊戲有熱情的交流之地。 內容 領域：遊戲業、加密貨幣。 技能：數學技巧、產業經驗、程式碼分享。 作者 Square</description>
+    </item>
+    
+    <item>
       <title>生日悖論 Birthday Paradox</title>
-      <link>https://squarecho.github.io/post/birthday_paradox/</link>
+      <link>https://squarecho.github.io/math/birthday_paradox/</link>
       <pubDate>Thu, 27 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://squarecho.github.io/post/birthday_paradox/</guid>
+      <guid>https://squarecho.github.io/math/birthday_paradox/</guid>
       <description>&lt;h1 id=&#34;生日悖論-birthday-paradox&#34;&gt;生日悖論 Birthday Paradox&lt;/h1&gt;
 &lt;h2 id=&#34;命題&#34;&gt;命題&lt;/h2&gt;
 &lt;p&gt;多少幾人的教室，有超過一半的概率會有其中兩個人同一天生日？&lt;br&gt;
@@ -91,10 +105,10 @@ $\Pi_{n=1}^N(\frac{365-n}{365}) = \frac{365}{365}\times\frac{365-1}{365}\times&a
     
     <item>
       <title>LoR蘑菇 - 陷阱卡抽取問題</title>
-      <link>https://squarecho.github.io/post/lor-teemo-mushroom/</link>
+      <link>https://squarecho.github.io/game/lor-teemo-mushroom/</link>
       <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://squarecho.github.io/post/lor-teemo-mushroom/</guid>
+      <guid>https://squarecho.github.io/game/lor-teemo-mushroom/</guid>
       <description>&lt;h1 id=&#34;lor蘑菇---陷阱卡抽取問題&#34;&gt;LoR蘑菇 - 陷阱卡抽取問題&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&#34;https://squarecho.github.io/assets/img/teemo.png&#34; alt=&#34;teemo&#34; title=&#34;LoR提摩蘑菇展示&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;蘑菇陷阱卡說明&#34;&gt;蘑菇陷阱卡說明&lt;/h2&gt;
@@ -110,10 +124,10 @@ $\Pi_{n=1}^N(\frac{365-n}{365}) = \frac{365}{365}\times\frac{365-1}{365}\times&a
     
     <item>
       <title>常見遊戲道具強化機制-保底強化模型</title>
-      <link>https://squarecho.github.io/post/guaranteed-strengthen/</link>
+      <link>https://squarecho.github.io/math/guaranteed-strengthen/</link>
       <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://squarecho.github.io/post/guaranteed-strengthen/</guid>
+      <guid>https://squarecho.github.io/math/guaranteed-strengthen/</guid>
       <description>&lt;h1 id=&#34;常見遊戲道具強化機制-保底強化模型&#34;&gt;常見遊戲道具強化機制-保底強化模型&lt;/h1&gt;
 &lt;h2 id=&#34;命題&#34;&gt;命題&lt;/h2&gt;
 &lt;p&gt;給定固定強化成功率x與固定保底值T，求成功強化的期望次數&lt;/p&gt;
@@ -141,10 +155,10 @@ E_v &amp;amp;= \frac{1}{x} \cr
     
     <item>
       <title>LoR遠征 - 雙淘汰賽制分析</title>
-      <link>https://squarecho.github.io/post/lor-arena-7wins/</link>
+      <link>https://squarecho.github.io/game/lor-arena-7wins/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://squarecho.github.io/post/lor-arena-7wins/</guid>
+      <guid>https://squarecho.github.io/game/lor-arena-7wins/</guid>
       <description>&lt;h1 id=&#34;lor遠征---雙淘汰賽制分析&#34;&gt;LoR遠征 - 雙淘汰賽制分析&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&#34;https://squarecho.github.io/assets/img/lor-arena-7wins.jpg&#34; alt=&#34;lor-arena-7wins&#34; title=&#34;LoR遠征展示&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;規則&#34;&gt;規則&lt;/h2&gt;
@@ -164,10 +178,10 @@ E_v &amp;amp;= \frac{1}{x} \cr
     
     <item>
       <title>尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到</title>
-      <link>https://squarecho.github.io/post/lotter_paradox/</link>
+      <link>https://squarecho.github.io/math/lotter_paradox/</link>
       <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://squarecho.github.io/post/lotter_paradox/</guid>
+      <guid>https://squarecho.github.io/math/lotter_paradox/</guid>
       <description>&lt;h1 id=&#34;尾牙時抽100份獎項給40人竟然三年都有人沒抽到&#34;&gt;尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到&lt;/h1&gt;
 &lt;p&gt;公司尾牙共計要發出100份獎項，參與抽獎的人數共40人，可重複中獎。有人沒拿到獎項的機率是多少？&lt;/p&gt;
 &lt;h2 id=&#34;解題&#34;&gt;解題&lt;/h2&gt;
@@ -182,10 +196,10 @@ E_v &amp;amp;= \frac{1}{x} \cr
     
     <item>
       <title>Golang 拷貝技術整理</title>
-      <link>https://squarecho.github.io/post/copy/</link>
+      <link>https://squarecho.github.io/code/copy/</link>
       <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://squarecho.github.io/post/copy/</guid>
+      <guid>https://squarecho.github.io/code/copy/</guid>
       <description>&lt;h1 id=&#34;golang-拷貝技術整理&#34;&gt;Golang 拷貝技術整理&lt;/h1&gt;
 &lt;h2 id=&#34;淺拷貝&#34;&gt;淺拷貝&lt;/h2&gt;
 &lt;p&gt;僅複製記憶體位置資訊,若修改則會連動修改&lt;/p&gt;
@@ -196,10 +210,10 @@ E_v &amp;amp;= \frac{1}{x} \cr
     
     <item>
       <title>愛的方程式 LOVE Formula</title>
-      <link>https://squarecho.github.io/post/mathlove/</link>
-      <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
+      <link>https://squarecho.github.io/math/mathlove/</link>
+      <pubDate>Tue, 03 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://squarecho.github.io/post/mathlove/</guid>
+      <guid>https://squarecho.github.io/math/mathlove/</guid>
       <description>&lt;h1 id=&#34;愛的方程式-love-formula&#34;&gt;愛的方程式 LOVE Formula&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&#34;https://squarecho.github.io/assets/img/love.png&#34; alt=&#34;love.png&#34; title=&#34;LOVE Formula&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;代號意義&#34;&gt;代號意義&lt;/h2&gt;
@@ -239,10 +253,10 @@ E_v &amp;amp;= \frac{1}{x} \cr
     
     <item>
       <title>Rummi 拉密分析</title>
-      <link>https://squarecho.github.io/post/rummi/</link>
+      <link>https://squarecho.github.io/game/rummi/</link>
       <pubDate>Fri, 03 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://squarecho.github.io/post/rummi/</guid>
+      <guid>https://squarecho.github.io/game/rummi/</guid>
       <description>&lt;h1 id=&#34;rummi-拉密分析&#34;&gt;Rummi 拉密分析&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -304,10 +318,10 @@ E_v &amp;amp;= \frac{1}{x} \cr
     
     <item>
       <title>常用工具連結</title>
-      <link>https://squarecho.github.io/post/toollink/</link>
+      <link>https://squarecho.github.io/note/toollink/</link>
       <pubDate>Fri, 03 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://squarecho.github.io/post/toollink/</guid>
+      <guid>https://squarecho.github.io/note/toollink/</guid>
       <description>&lt;h1 id=&#34;常用工具連結&#34;&gt;常用工具連結&lt;/h1&gt;
 &lt;h2 id=&#34;數學作圖&#34;&gt;數學作圖&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.geogebra.org/&#34;&gt;https://www.geogebra.org/&lt;/a&gt;&lt;br&gt;

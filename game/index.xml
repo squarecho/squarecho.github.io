@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Games on 遊戲數學平方</title>
+    <link>https://squarecho.github.io/game/</link>
+    <description>Recent content in Games on 遊戲數學平方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Wed, 17 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/game/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LoR蘑菇 - 陷阱卡抽取問題</title>
+      <link>https://squarecho.github.io/game/lor-teemo-mushroom/</link>
+      <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://squarecho.github.io/game/lor-teemo-mushroom/</guid>
+      <description>&lt;h1 id=&#34;lor蘑菇---陷阱卡抽取問題&#34;&gt;LoR蘑菇 - 陷阱卡抽取問題&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://squarecho.github.io/assets/img/teemo.png&#34; alt=&#34;teemo&#34; title=&#34;LoR提摩蘑菇展示&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;蘑菇陷阱卡說明&#34;&gt;蘑菇陷阱卡說明&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;蘑菇會隨機種在牌庫的其中一張牌&lt;/li&gt;
+&lt;li&gt;一張牌上可以有複數個蘑菇&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;命題&#34;&gt;命題&lt;/h2&gt;
+&lt;p&gt;給定一牌庫數量n,牌庫裡蘑菇總數量m
+求此次抽取的牌上共有幾個蘑菇？&lt;/p&gt;
+&lt;p&gt;`&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LoR遠征 - 雙淘汰賽制分析</title>
+      <link>https://squarecho.github.io/game/lor-arena-7wins/</link>
+      <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://squarecho.github.io/game/lor-arena-7wins/</guid>
+      <description>&lt;h1 id=&#34;lor遠征---雙淘汰賽制分析&#34;&gt;LoR遠征 - 雙淘汰賽制分析&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://squarecho.github.io/assets/img/lor-arena-7wins.jpg&#34; alt=&#34;lor-arena-7wins&#34; title=&#34;LoR遠征展示&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;規則&#34;&gt;規則&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;七勝出場&lt;/li&gt;
+&lt;li&gt;連續兩敗出場&lt;/li&gt;
+&lt;li&gt;挑戰第七勝時僅有一次敗局機會&lt;/li&gt;
+&lt;li&gt;每枚代幣共可參加兩場&lt;/li&gt;
+&lt;li&gt;兩場中成績較優者為獎勵發放條件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;隱含條件&#34;&gt;隱含條件&lt;/h2&gt;
+&lt;p&gt;實力表示每一局勝利的概率(期望勝率)&lt;/p&gt;
+&lt;h2 id=&#34;命題&#34;&gt;命題&lt;/h2&gt;
+&lt;p&gt;求實力要多高才能有一半的機率用一枚代幣獲得七勝獎勵&lt;/p&gt;
+&lt;p&gt;`&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Rummi 拉密分析</title>
+      <link>https://squarecho.github.io/game/rummi/</link>
+      <pubDate>Fri, 03 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://squarecho.github.io/game/rummi/</guid>
+      <description>&lt;h1 id=&#34;rummi-拉密分析&#34;&gt;Rummi 拉密分析&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;順或群&lt;/th&gt;
+&lt;th&gt;沒有百搭&lt;/th&gt;
+&lt;th&gt;一張百搭&lt;/th&gt;
+&lt;th&gt;兩張百搭&lt;/th&gt;
+&lt;th&gt;總和&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;三順&lt;/td&gt;
+&lt;td&gt;44&lt;/td&gt;
+&lt;td&gt;92&lt;/td&gt;
+&lt;td&gt;52&lt;/td&gt;
+&lt;td&gt;188&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;四順&lt;/td&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;td&gt;124&lt;/td&gt;
+&lt;td&gt;132&lt;/td&gt;
+&lt;td&gt;296&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;五順&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;148&lt;/td&gt;
+&lt;td&gt;233&lt;/td&gt;
+&lt;td&gt;417&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;三群&lt;/td&gt;
+&lt;td&gt;52&lt;/td&gt;
+&lt;td&gt;78&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;130&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;四群&lt;/td&gt;
+&lt;td&gt;13&lt;/td&gt;
+&lt;td&gt;52&lt;/td&gt;
+&lt;td&gt;78&lt;/td&gt;
+&lt;td&gt;143&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;總和&lt;/td&gt;
+&lt;td&gt;185&lt;/td&gt;
+&lt;td&gt;494&lt;/td&gt;
+&lt;td&gt;495&lt;/td&gt;
+&lt;td&gt;1174&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;`&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

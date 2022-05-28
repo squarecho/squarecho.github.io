@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Codes on 遊戲數學平方</title>
+    <link>https://squarecho.github.io/code/</link>
+    <description>Recent content in Codes on 遊戲數學平方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Wed, 03 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Golang 拷貝技術整理</title>
+      <link>https://squarecho.github.io/code/copy/</link>
+      <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://squarecho.github.io/code/copy/</guid>
+      <description>&lt;h1 id=&#34;golang-拷貝技術整理&#34;&gt;Golang 拷貝技術整理&lt;/h1&gt;
+&lt;h2 id=&#34;淺拷貝&#34;&gt;淺拷貝&lt;/h2&gt;
+&lt;p&gt;僅複製記憶體位置資訊,若修改則會連動修改&lt;/p&gt;
+&lt;h2 id=&#34;深拷貝&#34;&gt;深拷貝&lt;/h2&gt;
+&lt;p&gt;複製真實值,共會有兩份記憶體位置,若修改則分別修改&lt;/p&gt;
+&lt;p&gt;`&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

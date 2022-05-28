@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Notes on 遊戲數學平方</title>
+    <link>https://squarecho.github.io/note/</link>
+    <description>Recent content in Notes on 遊戲數學平方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Fri, 03 Feb 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/note/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>常用工具連結</title>
+      <link>https://squarecho.github.io/note/toollink/</link>
+      <pubDate>Fri, 03 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://squarecho.github.io/note/toollink/</guid>
+      <description>&lt;h1 id=&#34;常用工具連結&#34;&gt;常用工具連結&lt;/h1&gt;
+&lt;h2 id=&#34;數學作圖&#34;&gt;數學作圖&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.geogebra.org/&#34;&gt;https://www.geogebra.org/&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.desmos.com/&#34;&gt;https://www.desmos.com/  &lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;2d作圖&#34;&gt;2D作圖&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://app.diagrams.net/&#34;&gt;https://app.diagrams.net/&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.canva.com/&#34;&gt;https://www.canva.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;visa-匯率轉換&#34;&gt;VISA 匯率轉換&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.visa.com.tw/travel-with-visa/exchange-rate-calculator.html?fromCurr=TWD&amp;amp;toCurr=SGD&amp;amp;fee=0&amp;amp;utcConvertedDate=&amp;amp;exchangedate=03%2F21%2F2022&amp;amp;submitButton=%E8%A8%88%E7%AE%97%E5%8C%AF%E7%8E%87&#34;&gt;VISA 匯率轉換_TWDSGD&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.visa.com.tw/travel-with-visa/exchange-rate-calculator.html?fromCurr=SGD&amp;amp;toCurr=TWD&amp;amp;fee=0&amp;amp;utcConvertedDate=&amp;amp;exchangedate=03%2F21%2F2022&amp;amp;submitButton=%E8%A8%88%E7%AE%97%E5%8C%AF%E7%8E%87&#34;&gt;VISA 匯率轉換_SGDTWD&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;`&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

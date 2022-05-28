@@ -1,0 +1,909 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>生日悖論 Birthday Paradox - 遊戲數學平方</title>
+  
+  <meta name="keywords" content="遊戲數學平方,團對,思考,筆記,技術,分享,Golang">
+  
+  <meta property="og:title" content="生日悖論 Birthday Paradox">
+  <meta property="og:site_name" content="遊戲數學平方">
+  <meta property="og:image" content="/assets/img/author.jpg">
+  <meta name="title" content="生日悖論 Birthday Paradox - 遊戲數學平方" />
+  
+  <meta name="description" content="遊戲數學平方 | 部落格 | 遊戲 | 數學 | 後端 | Golang">
+  <link rel="shortcut icon" href="https://squarecho.github.io/assets/img/logo.png" />
+  <link rel="apple-touch-icon" href="https://squarecho.github.io/assets/img/logo.png" />
+  <link rel="apple-touch-icon-precomposed" href="https://squarecho.github.io/assets/img/logo.png" />
+  <link href="https://squarecho.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+  
+  <link href="https://squarecho.github.io/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="https://squarecho.github.io/css/main.css" rel="stylesheet" type="text/css" />
+  <link href="https://squarecho.github.io/css/syntax.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" id="hexo.configuration">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      scheme: 'Pisces',
+      sidebar: { "position": "left", "display": "post" },
+      
+      motion: true
+    };
+  </script>
+</head>
+<body itemscope itemtype="https://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="https://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://squarecho.github.io/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">遊戲數學平方</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">把自己角色扮演好，全力以赴每一秒</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://squarecho.github.io/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首頁
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://squarecho.github.io/categories/game/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-gamepad"></i> <br />遊戲
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://squarecho.github.io/categories/math/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-calculator"></i> <br />數學
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://squarecho.github.io/categories/code/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />程式
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://squarecho.github.io/categories/note/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />雜記
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://squarecho.github.io/post/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />總匯
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://squarecho.github.io/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />關於
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜尋</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/math/birthday_paradox/" itemprop="url">
+          生日悖論 Birthday Paradox
+        </a>
+      </h1>
+      <div class="post-meta">
+        <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2021-05-27">
+    2021-05-27
+</time>
+</span>
+        
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+         <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">610 字 ~2分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+      <h1 id="生日悖論-birthday-paradox">生日悖論 Birthday Paradox</h1>
+<h2 id="命題">命題</h2>
+<p>多少幾人的教室，有超過一半的概率會有其中兩個人同一天生日？<br>
+直覺上的答案與真實值也許跟妳想的不一樣。</p>
+<h2 id="基本假設">基本假設</h2>
+<ul>
+<li>一年365天</li>
+<li>每天生日概率相等</li>
+</ul>
+<h2 id="解題">解題</h2>
+<ul>
+<li>
+<p>兩個人同一天生日的機率 $1/365 \times 1/365 = 0.00000750609$</p>
+</li>
+<li>
+<p>N個人都沒有人同一天生日的機率</p>
+<ol>
+<li>N&gt;=365 必定有兩個人在同一天生日</li>
+<li>N&lt;365 <br>
+$\Pi_{n=1}^N(\frac{365-n}{365}) = \frac{365}{365}\times\frac{365-1}{365}\times&hellip;\times\frac{365-N}{365}$</li>
+</ol>
+</li>
+</ul>
+<p>`</p>
+<p>`</p>
+<h3 id="模擬程式">模擬程式</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;math/rand&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Seed</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">UnixNano</span>())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">100</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">i</span>, <span style="color:#e6db74">&#34;,&#34;</span>, <span style="color:#a6e22e">stat</span>(<span style="color:#a6e22e">i</span>))
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">stat</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">float64</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">measure_time</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">10000.0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">hit_time</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0.0</span>; <span style="color:#a6e22e">t</span> &lt; <span style="color:#a6e22e">measure_time</span>; <span style="color:#a6e22e">t</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">once</span>(<span style="color:#a6e22e">n</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">hit_time</span><span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">hit_time</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">measure_time</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">once</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">int</span>{}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">n</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">rng</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Intn</span>(<span style="color:#ae81ff">365</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">rng</span>]<span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">rng</span>] <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">2</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="func-pin">func PI(N)</h3>
+<p>PI(N) = 
+$\Pi_{n=1}^N(\frac{365-n}{365}) = \frac{365}{365}\times\frac{365-1}{365}\times&hellip;\times\frac{365-N}{365}$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">PI</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">float64</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">365</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ans</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1.0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">n</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">ans</span> <span style="color:#f92672">*=</span> (<span style="color:#ae81ff">365.0</span> <span style="color:#f92672">-</span> float64(<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">ans</span> <span style="color:#f92672">/=</span> <span style="color:#ae81ff">365.0</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ans</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="整合表格">整合表格</h2>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>1-PI(N)</th>
+<th>模擬結果</th>
+<th>index</th>
+<th>1-PI(N)</th>
+<th>模擬結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>51</td>
+<td>0.974432</td>
+<td>0.971100</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.002740</td>
+<td>0.002600</td>
+<td>52</td>
+<td>0.978005</td>
+<td>0.976800</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.008204</td>
+<td>0.010300</td>
+<td>53</td>
+<td>0.981138</td>
+<td>0.981100</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.016356</td>
+<td>0.015100</td>
+<td>54</td>
+<td>0.983877</td>
+<td>0.983700</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.027136</td>
+<td>0.028400</td>
+<td>55</td>
+<td>0.986262</td>
+<td>0.986200</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0.040462</td>
+<td>0.041800</td>
+<td>56</td>
+<td>0.988332</td>
+<td>0.989900</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0.056236</td>
+<td>0.057200</td>
+<td>57</td>
+<td>0.990122</td>
+<td>0.988000</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0.074335</td>
+<td>0.069100</td>
+<td>58</td>
+<td>0.991665</td>
+<td>0.994400</td>
+</tr>
+<tr>
+<td>9</td>
+<td>0.094624</td>
+<td>0.088400</td>
+<td>59</td>
+<td>0.992989</td>
+<td>0.992300</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.116948</td>
+<td>0.120200</td>
+<td>60</td>
+<td>0.994123</td>
+<td>0.994100</td>
+</tr>
+<tr>
+<td>11</td>
+<td>0.141141</td>
+<td>0.138500</td>
+<td>61</td>
+<td>0.995089</td>
+<td>0.994300</td>
+</tr>
+<tr>
+<td>12</td>
+<td>0.167025</td>
+<td>0.168700</td>
+<td>62</td>
+<td>0.995910</td>
+<td>0.995500</td>
+</tr>
+<tr>
+<td>13</td>
+<td>0.194410</td>
+<td>0.199300</td>
+<td>63</td>
+<td>0.996604</td>
+<td>0.997100</td>
+</tr>
+<tr>
+<td>14</td>
+<td>0.223103</td>
+<td>0.224000</td>
+<td>64</td>
+<td>0.997190</td>
+<td>0.997200</td>
+</tr>
+<tr>
+<td>15</td>
+<td>0.252901</td>
+<td>0.249900</td>
+<td>65</td>
+<td>0.997683</td>
+<td>0.998400</td>
+</tr>
+<tr>
+<td>16</td>
+<td>0.283604</td>
+<td>0.289400</td>
+<td>66</td>
+<td>0.998096</td>
+<td>0.998000</td>
+</tr>
+<tr>
+<td>17</td>
+<td>0.315008</td>
+<td>0.315500</td>
+<td>67</td>
+<td>0.998440</td>
+<td>0.998800</td>
+</tr>
+<tr>
+<td>18</td>
+<td>0.346911</td>
+<td>0.350100</td>
+<td>68</td>
+<td>0.998726</td>
+<td>0.999200</td>
+</tr>
+<tr>
+<td>19</td>
+<td>0.379119</td>
+<td>0.368700</td>
+<td>69</td>
+<td>0.998964</td>
+<td>0.998700</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.411438</td>
+<td>0.415500</td>
+<td>70</td>
+<td>0.999160</td>
+<td>0.999300</td>
+</tr>
+<tr>
+<td>21</td>
+<td>0.443688</td>
+<td>0.444900</td>
+<td>71</td>
+<td>0.999321</td>
+<td>0.999200</td>
+</tr>
+<tr>
+<td>22</td>
+<td>0.475695</td>
+<td>0.476900</td>
+<td>72</td>
+<td>0.999453</td>
+<td>0.999700</td>
+</tr>
+<tr>
+<td>23</td>
+<td>0.507297</td>
+<td>0.499800</td>
+<td>73</td>
+<td>0.999561</td>
+<td>0.999700</td>
+</tr>
+<tr>
+<td>24</td>
+<td>0.538344</td>
+<td>0.546600</td>
+<td>74</td>
+<td>0.999649</td>
+<td>0.999700</td>
+</tr>
+<tr>
+<td>25</td>
+<td>0.568700</td>
+<td>0.574800</td>
+<td>75</td>
+<td>0.999720</td>
+<td>0.999700</td>
+</tr>
+<tr>
+<td>26</td>
+<td>0.598241</td>
+<td>0.595500</td>
+<td>76</td>
+<td>0.999777</td>
+<td>0.999700</td>
+</tr>
+<tr>
+<td>27</td>
+<td>0.626859</td>
+<td>0.625500</td>
+<td>77</td>
+<td>0.999824</td>
+<td>0.999800</td>
+</tr>
+<tr>
+<td>28</td>
+<td>0.654461</td>
+<td>0.654300</td>
+<td>78</td>
+<td>0.999861</td>
+<td>0.999900</td>
+</tr>
+<tr>
+<td>29</td>
+<td>0.680969</td>
+<td>0.680900</td>
+<td>79</td>
+<td>0.999891</td>
+<td>0.999700</td>
+</tr>
+<tr>
+<td>30</td>
+<td>0.706316</td>
+<td>0.701500</td>
+<td>80</td>
+<td>0.999914</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>31</td>
+<td>0.730455</td>
+<td>0.730200</td>
+<td>81</td>
+<td>0.999933</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>32</td>
+<td>0.753348</td>
+<td>0.751900</td>
+<td>82</td>
+<td>0.999948</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>33</td>
+<td>0.774972</td>
+<td>0.775300</td>
+<td>83</td>
+<td>0.999960</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>34</td>
+<td>0.795317</td>
+<td>0.797600</td>
+<td>84</td>
+<td>0.999969</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>35</td>
+<td>0.814383</td>
+<td>0.821400</td>
+<td>85</td>
+<td>0.999976</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>36</td>
+<td>0.832182</td>
+<td>0.838200</td>
+<td>86</td>
+<td>0.999982</td>
+<td>0.999900</td>
+</tr>
+<tr>
+<td>37</td>
+<td>0.848734</td>
+<td>0.846700</td>
+<td>87</td>
+<td>0.999986</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>38</td>
+<td>0.864068</td>
+<td>0.862700</td>
+<td>88</td>
+<td>0.999989</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>39</td>
+<td>0.878220</td>
+<td>0.877300</td>
+<td>89</td>
+<td>0.999992</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>40</td>
+<td>0.891232</td>
+<td>0.891800</td>
+<td>90</td>
+<td>0.999994</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>41</td>
+<td>0.903152</td>
+<td>0.905100</td>
+<td>91</td>
+<td>0.999995</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>42</td>
+<td>0.914030</td>
+<td>0.918900</td>
+<td>92</td>
+<td>0.999997</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>43</td>
+<td>0.923923</td>
+<td>0.923300</td>
+<td>93</td>
+<td>0.999997</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>44</td>
+<td>0.932885</td>
+<td>0.932400</td>
+<td>94</td>
+<td>0.999998</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>45</td>
+<td>0.940976</td>
+<td>0.945300</td>
+<td>95</td>
+<td>0.999999</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>46</td>
+<td>0.948253</td>
+<td>0.946200</td>
+<td>96</td>
+<td>0.999999</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>47</td>
+<td>0.954774</td>
+<td>0.955300</td>
+<td>97</td>
+<td>0.999999</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>48</td>
+<td>0.960598</td>
+<td>0.960700</td>
+<td>98</td>
+<td>0.999999</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>49</td>
+<td>0.965780</td>
+<td>0.965100</td>
+<td>99</td>
+<td>1.000000</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>50</td>
+<td>0.970374</td>
+<td>0.972600</td>
+<td>100</td>
+<td>1.000000</td>
+<td>1.000000</td>
+</tr>
+</tbody>
+</table>
+<h2 id="結論">結論</h2>
+<p>約23人即可滿足要求，常見國中小的班級人數已超過此數量</p>
+    </div>
+    <footer class="post-footer">
+      
+ 
+<div class="post-tags">     
+     
+    <a href="https://squarecho.github.io/tags/math" rel="tag" title="math">#math#</a>
+    
+    <a href="https://squarecho.github.io/tags/paradox" rel="tag" title="paradox">#paradox#</a>
+    
+</div>
+
+
+
+      <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+        
+        <a href="https://squarecho.github.io/about/" rel="next" title="關於遊戲數學平方">
+            <i class="fa fa-chevron-left"></i> 關於遊戲數學平方
+        </a>
+        
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+        
+        <a href="https://squarecho.github.io/game/lor-teemo-mushroom/" rel="prev" title="LoR蘑菇 - 陷阱卡抽取問題">
+            LoR蘑菇 - 陷阱卡抽取問題 <i class="fa fa-chevron-right"></i>
+        </a>
+        
+    </div>
+</div>
+      <div class="post-nav">
+    <div
+        style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+        <div>
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/"><img alt="創用 CC 授權條款"
+                    style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />
+            本站內容由<a xmlns:cc="https://creativecommons.org/ns#" href="https://squarecho.github.io/"
+                property="cc:attributionName" rel="cc:attributionURL">Square Cho</a>製作，以<a rel="license"
+                href="https://creativecommons.org/licenses/by-nc/4.0/">創用CC 姓名標示-非商業性 4.0 國際 授權條款</a>釋出。<br />
+            若有商業需求請來信聯絡 b98507006@gmail.com
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目錄
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站點概覽
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <img class="site-author-image" itemprop="image" src="https://squarecho.github.io/assets/img/author.png" alt="Square Cho" />
+    <p class="site-author-name" itemprop="name">Square Cho</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        Mathematician &amp; Programmer</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://squarecho.github.io/post/">
+        <span class="site-state-item-count">0</span>
+        <span class="site-state-item-name">日誌</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://squarecho.github.io/categories/">      
+         
+        <span class="site-state-item-count">4</span>
+        
+        <span class="site-state-item-name">分類</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://squarecho.github.io/tags/">
+         
+        <span class="site-state-item-count">6</span>
+        
+        <span class="site-state-item-name">標籤</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+    <span class="links-of-author-item">
+        <a href="https://github.com/squarecho/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+    </span>
+    
+    <span class="links-of-author-item">
+        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Notes">
+            <i class="fa fa-fw fa-globe"></i>
+            Notes
+        </a>
+    </span>
+    
+    <span class="links-of-author-item">
+        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Notes">
+            <i class="fa fa-fw fa-globe"></i>
+            Notes
+        </a>
+    </span>
+    
+    <span class="links-of-author-item">
+        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Notes">
+            <i class="fa fa-fw fa-globe"></i>
+            Notes
+        </a>
+    </span>
+    
+</div>
+
+      
+
+      <div class="links-of-blogroll motion-element inline">
+<script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=5wv45chsv1x&amp;m=0&amp;s=220&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33&amp;bv=35" async="async"></script>
+</div>
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#命題">命題</a></li>
+    <li><a href="#基本假設">基本假設</a></li>
+    <li><a href="#解題">解題</a>
+      <ul>
+        <li><a href="#模擬程式">模擬程式</a></li>
+        <li><a href="#func-pin">func PI(N)</a></li>
+      </ul>
+    </li>
+    <li><a href="#整合表格">整合表格</a></li>
+    <li><a href="#結論">結論</a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  <span itemprop="copyrightYear"> &copy;
+    2018 - 2022</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">遊戲數學平方</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="https://gohugo.io" target="_blank" title="hugo">Hugo v0.99.1</a>
+</div>
+<div class="theme-info">
+  Theme by - <a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://squarecho.github.io/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://squarecho.github.io/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://squarecho.github.io/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://squarecho.github.io/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://squarecho.github.io/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://squarecho.github.io/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://squarecho.github.io/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://squarecho.github.io/js/utils.js"></script>
+<script type="text/javascript" src="https://squarecho.github.io/js/motion.js"></script>
+<script type="text/javascript" src="https://squarecho.github.io/js/affix.js"></script>
+<script type="text/javascript" src="https://squarecho.github.io/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://squarecho.github.io/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://squarecho.github.io/js/post-details.js"></script>
+<script type="text/javascript" src="https://squarecho.github.io/js/toc.js"></script>
+
+<script type="text/javascript" src="https://squarecho.github.io/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://squarecho.github.io/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+</body>
+</html>
