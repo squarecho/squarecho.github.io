@@ -8,15 +8,6 @@
     <language>zh-TW</language>
     <lastBuildDate>Thu, 03 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/categories/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>LOVE</title>
-      <link>https://squarecho.github.io/post/mathlove/</link>
-      <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://squarecho.github.io/post/mathlove/</guid>
-      <description> </description>
-    </item>
-    
-    <item>
       <title>公正雜湊驗證機制</title>
       <link>https://squarecho.github.io/post/provably_fair/</link>
       <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
@@ -51,6 +42,49 @@
 &lt;tr&gt;
 &lt;td&gt;Nonce&lt;/td&gt;
 &lt;td&gt;隨下注次數增加(從&amp;quot;1&amp;quot;開始)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;`&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>愛的方城市 LOVE Formula</title>
+      <link>https://squarecho.github.io/post/mathlove/</link>
+      <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://squarecho.github.io/post/mathlove/</guid>
+      <description>&lt;h1 id=&#34;愛的方城市-love-formula&#34;&gt;愛的方城市 LOVE Formula&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://squarecho.github.io/assets/img/love.png&#34; alt=&#34;png&#34; title=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;代號意義&#34;&gt;代號意義&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;代號&lt;/th&gt;
+&lt;th&gt;公式&lt;/th&gt;
+&lt;th&gt;意義&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;L&lt;/td&gt;
+&lt;td&gt;$y = \frac{1}{x}$&lt;/td&gt;
+&lt;td&gt;倒數：互願成為對方的倒影&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;O&lt;/td&gt;
+&lt;td&gt;$(x-15)^2+(y-5)^2=25$&lt;/td&gt;
+&lt;td&gt;圈：手拉手總是圍成一個圈&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;V&lt;/td&gt;
+&lt;td&gt;$y = ｜-2(x-25) ｜$&lt;/td&gt;
+&lt;td&gt;絕對值：願與妳永在正象限&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;E&lt;/td&gt;
+&lt;td&gt;$y = 7\sin(1.23y-4.4)+38$&lt;/td&gt;
+&lt;td&gt;波動：兩人一起時總是心情蕩漾&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;

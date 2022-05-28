@@ -1,18 +1,6 @@
 <search>
     
      <entry>
-        <title>LOVE</title>
-        <url>https://squarecho.github.io/post/mathlove/</url>
-        <categories>
-          <category>math</category>
-        </categories>
-        <tags>
-          <tag>hash</tag><tag>game</tag>
-        </tags>
-        <content type="html">  </content>
-    </entry>
-    
-     <entry>
         <title>公正雜湊驗證機制</title>
         <url>https://squarecho.github.io/post/provably_fair/</url>
         <categories>
@@ -52,6 +40,21 @@ SHA512長度共128個字符，若取完所有單位後皆 number &amp;gt; 999999
 性質整理 基本型別 string, int, float64, bool 單純指派視為值複製
 組合型別 slice, map ,struct 單純指派視為記憶體位置複製
 範例 	a := []int{1, 2, 3} 	b := a 	fmt.Println(a) 	fmt.Println(b)  	b[0] = 777 	fmt.Println(a) 	fmt.Println(b) 	a := []int{1, 2, 3} 	b := make([]int, 3) 	copy(b, a) 	fmt.Println(a) 	fmt.Println(b) 	b[0] = 777 	fmt.Println(a) 	fmt.Println(b) </content>
+    </entry>
+    
+     <entry>
+        <title>愛的方城市 LOVE Formula</title>
+        <url>https://squarecho.github.io/post/mathlove/</url>
+        <categories>
+          <category>math</category>
+        </categories>
+        <tags>
+          <tag>game</tag>
+        </tags>
+        <content type="html"> 愛的方城市 LOVE Formula 代號意義    代號 公式 意義     L $y = \frac{1}{x}$ 倒數：互願成為對方的倒影   O $(x-15)^2&#43;(y-5)^2=25$ 圈：手拉手總是圍成一個圈   V $y = ｜-2(x-25) ｜$ 絕對值：願與妳永在正象限   E $y = 7\sin(1.23y-4.4)&#43;38$ 波動：兩人一起時總是心情蕩漾    `
+`
+ 線上數學作圖連結分享 Desmos: www.desmos.com/calculator/o7dksfmlll Geogebra : www.geogebra.org/calculator/wfmr7cpu
+</content>
     </entry>
     
      <entry>
