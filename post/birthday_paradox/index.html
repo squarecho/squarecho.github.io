@@ -201,57 +201,57 @@ $\Pi_{n=1}^N(\frac{365-n}{365}) = \frac{365}{365}\times\frac{365-1}{365}\times&h
 <p>`</p>
 <p>`</p>
 <h3 id="模擬程式">模擬程式</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">package</span> main
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
-</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;math/rand&#34;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#b44">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#b44">&#34;math/rand&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#b44">&#34;time&#34;</span>
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Seed</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">UnixNano</span>())
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">func</span> <span style="color:#00a000">main</span>() {
+</span></span><span style="display:flex;"><span>	rand.<span style="color:#00a000">Seed</span>(time.<span style="color:#00a000">Now</span>().<span style="color:#00a000">UnixNano</span>())
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">100</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">i</span>, <span style="color:#e6db74">&#34;,&#34;</span>, <span style="color:#a6e22e">stat</span>(<span style="color:#a6e22e">i</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#a2f;font-weight:bold">for</span> i <span style="color:#666">:=</span> <span style="color:#666">1</span>; i <span style="color:#666">&lt;=</span> <span style="color:#666">100</span>; i<span style="color:#666">++</span> {
+</span></span><span style="display:flex;"><span>		fmt.<span style="color:#00a000">Println</span>(i, <span style="color:#b44">&#34;,&#34;</span>, <span style="color:#00a000">stat</span>(i))
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">stat</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">float64</span> {
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">measure_time</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">10000.0</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">hit_time</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0.0</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0.0</span>; <span style="color:#a6e22e">t</span> &lt; <span style="color:#a6e22e">measure_time</span>; <span style="color:#a6e22e">t</span><span style="color:#f92672">++</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">once</span>(<span style="color:#a6e22e">n</span>) {
-</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">hit_time</span><span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">func</span> <span style="color:#00a000">stat</span>(n <span style="color:#0b0;font-weight:bold">int</span>) <span style="color:#0b0;font-weight:bold">float64</span> {
+</span></span><span style="display:flex;"><span>	measure_time <span style="color:#666">:=</span> <span style="color:#666">10000.0</span>
+</span></span><span style="display:flex;"><span>	hit_time <span style="color:#666">:=</span> <span style="color:#666">0.0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a2f;font-weight:bold">for</span> t <span style="color:#666">:=</span> <span style="color:#666">0.0</span>; t &lt; measure_time; t<span style="color:#666">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a2f;font-weight:bold">if</span> <span style="color:#00a000">once</span>(n) {
+</span></span><span style="display:flex;"><span>			hit_time<span style="color:#666">++</span>
 </span></span><span style="display:flex;"><span>		}
 </span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">hit_time</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">measure_time</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a2f;font-weight:bold">return</span> hit_time <span style="color:#666">/</span> measure_time
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">once</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">int</span>{}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">n</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">rng</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Intn</span>(<span style="color:#ae81ff">365</span>)
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">rng</span>]<span style="color:#f92672">++</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">m</span>[<span style="color:#a6e22e">rng</span>] <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">2</span> {
-</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">func</span> <span style="color:#00a000">once</span>(n <span style="color:#0b0;font-weight:bold">int</span>) <span style="color:#0b0;font-weight:bold">bool</span> {
+</span></span><span style="display:flex;"><span>	m <span style="color:#666">:=</span> <span style="color:#a2f;font-weight:bold">map</span>[<span style="color:#0b0;font-weight:bold">int</span>]<span style="color:#0b0;font-weight:bold">int</span>{}
+</span></span><span style="display:flex;"><span>	<span style="color:#a2f;font-weight:bold">for</span> i <span style="color:#666">:=</span> <span style="color:#666">0</span>; i &lt; n; i<span style="color:#666">++</span> {
+</span></span><span style="display:flex;"><span>		rng <span style="color:#666">:=</span> rand.<span style="color:#00a000">Intn</span>(<span style="color:#666">365</span>)
+</span></span><span style="display:flex;"><span>		m[rng]<span style="color:#666">++</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a2f;font-weight:bold">if</span> m[rng] <span style="color:#666">&gt;=</span> <span style="color:#666">2</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a2f;font-weight:bold">return</span> <span style="color:#a2f;font-weight:bold">true</span>
 </span></span><span style="display:flex;"><span>		}
 </span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a2f;font-weight:bold">return</span> <span style="color:#a2f;font-weight:bold">false</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="func-pin">func PI(N)</h3>
 <p>PI(N) = 
 $\Pi_{n=1}^N(\frac{365-n}{365}) = \frac{365}{365}\times\frac{365-1}{365}\times&hellip;\times\frac{365-N}{365}$</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">PI</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">float64</span> {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">365</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0.0</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#a2f;font-weight:bold">func</span> <span style="color:#00a000">PI</span>(n <span style="color:#0b0;font-weight:bold">int</span>) <span style="color:#0b0;font-weight:bold">float64</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a2f;font-weight:bold">if</span> n <span style="color:#666">&gt;=</span> <span style="color:#666">365</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a2f;font-weight:bold">return</span> <span style="color:#666">0.0</span>
 </span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ans</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1.0</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">n</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">ans</span> <span style="color:#f92672">*=</span> (<span style="color:#ae81ff">365.0</span> <span style="color:#f92672">-</span> float64(<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">ans</span> <span style="color:#f92672">/=</span> <span style="color:#ae81ff">365.0</span>
+</span></span><span style="display:flex;"><span>	ans <span style="color:#666">:=</span> <span style="color:#666">1.0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a2f;font-weight:bold">for</span> i <span style="color:#666">:=</span> <span style="color:#666">1</span>; i <span style="color:#666">&lt;=</span> n; i<span style="color:#666">++</span> {
+</span></span><span style="display:flex;"><span>		ans <span style="color:#666">*=</span> (<span style="color:#666">365.0</span> <span style="color:#666">-</span> <span style="color:#a2f">float64</span>(i<span style="color:#666">-</span><span style="color:#666">1</span>))
+</span></span><span style="display:flex;"><span>		ans <span style="color:#666">/=</span> <span style="color:#666">365.0</span>
 </span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ans</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a2f;font-weight:bold">return</span> ans
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="整合表格">整合表格</h2>
 <table>
@@ -687,8 +687,8 @@ $\Pi_{n=1}^N(\frac{365-n}{365}) = \frac{365}{365}\times\frac{365-1}{365}\times&h
       <div class="post-nav">
     <div class="post-nav-next post-nav-item">
         
-        <a href="https://squarecho.github.io/post/provably_fair/" rel="next" title="公正雜湊驗證機制">
-            <i class="fa fa-chevron-left"></i> 公正雜湊驗證機制
+        <a href="https://squarecho.github.io/about/" rel="next" title="關於遊戲數學平方">
+            <i class="fa fa-chevron-left"></i> 關於遊戲數學平方
         </a>
         
     </div>
@@ -785,23 +785,23 @@ $\Pi_{n=1}^N(\frac{365-n}{365}) = \frac{365}{365}\times\frac{365-1}{365}\times&h
     </span>
     
     <span class="links-of-author-item">
-        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Notes">
-            <i class="fa fa-fw fa-globe"></i>
-            Notes
+        <a href="mailto:b98507006@gmail.com" target="_blank" title="Email">
+            <i class="fa fa-fw fa-envelope"></i>
+            Email
         </a>
     </span>
     
     <span class="links-of-author-item">
-        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Notes">
-            <i class="fa fa-fw fa-globe"></i>
-            Notes
+        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Draft">
+            <i class="fa fa-fw fa-book"></i>
+            Draft
         </a>
     </span>
     
     <span class="links-of-author-item">
-        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Notes">
-            <i class="fa fa-fw fa-globe"></i>
-            Notes
+        <a href="https://www.linkedin.com/in/squarecho/" target="_blank" title="Linkedin">
+            <i class="fa fa-fw fa-linkedin-square"></i>
+            Linkedin
         </a>
     </span>
     
@@ -855,6 +855,39 @@ $\Pi_{n=1}^N(\frac{365-n}{365}) = \frac{365}{365}\times\frac{365-1}{365}\times&h
   Theme by - <a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
+
+
+<script>
+  const loadScript = (url, onloadFunction) => {
+    var newScript = document.createElement("script");
+    newScript.onerror = (oError) => {
+      throw new URIError("The script " + oError.target.src + " didn't load correctly.");
+    };
+    if (onloadFunction) { newScript.onload = onloadFunction; }
+    document.head.insertAdjacentElement('beforeend', newScript);
+    newScript.src = url;
+  }
+
+  
+  const loadMermaidOnNeed = () => {
+    if (document.querySelectorAll('.mermaid').length > 0) {
+      loadScript('https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js', () => {
+        document.head.insertAdjacentHTML("beforeend", `<style>.mermaid svg { background-color: #dadcd8 !important; }</style>`);
+        // default, dark, neutral, forest
+        mermaid.initialize({ startOnLoad: false, securityLevel: "strict", logLevel: 1, theme: "neutral" });
+        
+        
+        mermaid.init();
+        console.log("mermaid init done");
+      })
+    }
+  }
+
+  window.addEventListener('load', function (event) {
+    
+    loadMermaidOnNeed();
+  });
+</script>
       </div>
     </footer>
 

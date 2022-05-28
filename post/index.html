@@ -146,9 +146,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2022-02-03"
-              content="02-03" >
-          02-03
+              datetime="2022-05-28"
+              content="05-28" >
+          05-28
         </time>
       </div>
     </header>
@@ -257,8 +257,8 @@
   <article class="post post-type-normal }}" itemscope itemtype="https://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title">
-        <a class="post-title-link" href="https://squarecho.github.io/post/mathlove/" itemprop="url">
-            <span itemprop="name">愛的方程式 LOVE Formula</span>
+        <a class="post-title-link" href="https://squarecho.github.io/post/copy/" itemprop="url">
+            <span itemprop="name">Golang 拷貝技術整理</span>
         </a>
       </h1>
 
@@ -272,17 +272,22 @@
     </header>
   </article>
 
+
+<div class="collection-title">
+  <h2 class="archive-year motion-element" id="archive-year-2018">2018</h2>
+</div>
+
   <article class="post post-type-normal }}" itemscope itemtype="https://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title">
-        <a class="post-title-link" href="https://squarecho.github.io/post/copy/" itemprop="url">
-            <span itemprop="name">Golang 拷貝技術整理</span>
+        <a class="post-title-link" href="https://squarecho.github.io/post/mathlove/" itemprop="url">
+            <span itemprop="name">愛的方程式 LOVE Formula</span>
         </a>
       </h1>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2019-07-03"
+              datetime="2018-07-03"
               content="07-03" >
           07-03
         </time>
@@ -432,23 +437,23 @@
     </span>
     
     <span class="links-of-author-item">
-        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Notes">
-            <i class="fa fa-fw fa-globe"></i>
-            Notes
+        <a href="mailto:b98507006@gmail.com" target="_blank" title="Email">
+            <i class="fa fa-fw fa-envelope"></i>
+            Email
         </a>
     </span>
     
     <span class="links-of-author-item">
-        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Notes">
-            <i class="fa fa-fw fa-globe"></i>
-            Notes
+        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Draft">
+            <i class="fa fa-fw fa-book"></i>
+            Draft
         </a>
     </span>
     
     <span class="links-of-author-item">
-        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Notes">
-            <i class="fa fa-fw fa-globe"></i>
-            Notes
+        <a href="https://www.linkedin.com/in/squarecho/" target="_blank" title="Linkedin">
+            <i class="fa fa-fw fa-linkedin-square"></i>
+            Linkedin
         </a>
     </span>
     
@@ -483,6 +488,39 @@
   Theme by - <a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
+
+
+<script>
+  const loadScript = (url, onloadFunction) => {
+    var newScript = document.createElement("script");
+    newScript.onerror = (oError) => {
+      throw new URIError("The script " + oError.target.src + " didn't load correctly.");
+    };
+    if (onloadFunction) { newScript.onload = onloadFunction; }
+    document.head.insertAdjacentElement('beforeend', newScript);
+    newScript.src = url;
+  }
+
+  
+  const loadMermaidOnNeed = () => {
+    if (document.querySelectorAll('.mermaid').length > 0) {
+      loadScript('https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js', () => {
+        document.head.insertAdjacentHTML("beforeend", `<style>.mermaid svg { background-color: #dadcd8 !important; }</style>`);
+        // default, dark, neutral, forest
+        mermaid.initialize({ startOnLoad: false, securityLevel: "strict", logLevel: 1, theme: "neutral" });
+        
+        
+        mermaid.init();
+        console.log("mermaid init done");
+      })
+    }
+  }
+
+  window.addEventListener('load', function (event) {
+    
+    loadMermaidOnNeed();
+  });
+</script>
       </div>
     </footer>
 

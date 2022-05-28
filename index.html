@@ -130,6 +130,644 @@
     
  <section id="posts" class="posts-expand">
 
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/post/provably_fair/" itemprop="url">
+        公正雜湊驗證機制
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2022-05-28">
+    2022-05-28
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">788 字 ~2分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="公正雜湊驗證機制">公正雜湊驗證機制</h1>
+<p>根據雜湊不可逆原理達成的玩家信任機制。</p>
+<h2 id="玩家驗證角度看流程圖">玩家驗證角度看流程圖</h2>
+
+<pre class="mermaid" align="center">
+sequenceDiagram
+  Client->>Server: Client_Seed_A
+  Server->>Client: Hashed_Server_Seed_A
+  loop Client Nonce++
+      Client->>Client: Playing
+  end
+  Client->>Server: new Client_Seed_B
+  Server->>Client: Server_Seed_A, Hashed_Server_Seed_B
+  
+  Note left of Client: Check "Server_Seed_A" & "Hashed_Server_Seed_A"
+  loop Client Nonce++
+      Client->>Client: Verify By Server_Seed_A, Client_Seed_A
+  end
+</pre>
+<h2 id="機制概述">機制概述</h2>
+<p>根據 <strong>伺服器種子(Server_Seed)</strong> 與 <strong>玩家種子(Client_Seed)</strong> 產生雜湊字串(SHA512)，根據其字串上取得該遊戲結果。<br>
+並於是前給予玩家 <strong>已經雜湊的伺服器種子(Hashed_Server_Seed)</strong> ，使玩家可以事後與 <strong>伺服器種子(Server_Seed)</strong> 做雜湊驗證，讓玩家確保沒有作弊的可能性。</p>
+<h2 id="驗證需求">驗證需求</h2>
+<table>
+<thead>
+<tr>
+<th>欄位</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hashed_Server_Seed</td>
+<td>於下注前給玩家</td>
+</tr>
+<tr>
+<td>Server_Seed</td>
+<td>玩家更換 Client Seed 的時候再給玩家</td>
+</tr>
+<tr>
+<td>Client_Seed</td>
+<td>玩家可以自行更新</td>
+</tr>
+<tr>
+<td>Nonce</td>
+<td>隨下注次數增加(從&quot;1&quot;開始)</td>
+</tr>
+</tbody>
+</table>
+<p>`</p>
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://squarecho.github.io/post/provably_fair/" rel="contents">
+      閱讀全文 &raquo;
+    </a>
+    </div>
+    
+    <footer class="post-footer"><div class="post-eof"></div></footer>
+  </article>
+
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/post/birthday_paradox/" itemprop="url">
+        生日悖論 Birthday Paradox
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2021-05-27">
+    2021-05-27
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">610 字 ~2分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="生日悖論-birthday-paradox">生日悖論 Birthday Paradox</h1>
+<h2 id="命題">命題</h2>
+<p>多少幾人的教室，有超過一半的概率會有其中兩個人同一天生日？<br>
+直覺上的答案與真實值也許跟妳想的不一樣。</p>
+<h2 id="基本假設">基本假設</h2>
+<ul>
+<li>一年365天</li>
+<li>每天生日概率相等</li>
+</ul>
+<h2 id="解題">解題</h2>
+<ul>
+<li>
+<p>兩個人同一天生日的機率 $1/365 \times 1/365 = 0.00000750609$</p>
+</li>
+<li>
+<p>N個人都沒有人同一天生日的機率</p>
+<ol>
+<li>N&gt;=365 必定有兩個人在同一天生日</li>
+<li>N&lt;365 <br>
+$\Pi_{n=1}^N(\frac{365-n}{365}) = \frac{365}{365}\times\frac{365-1}{365}\times&hellip;\times\frac{365-N}{365}$</li>
+</ol>
+</li>
+</ul>
+<p>`</p>
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://squarecho.github.io/post/birthday_paradox/" rel="contents">
+      閱讀全文 &raquo;
+    </a>
+    </div>
+    
+    <footer class="post-footer"><div class="post-eof"></div></footer>
+  </article>
+
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/post/lor-teemo-mushroom/" itemprop="url">
+        LoR蘑菇 - 陷阱卡抽取問題
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2021-03-17">
+    2021-03-17
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/game" itemprop="url" rel="index">
+        <span itemprop="name">game</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">240 字 ~1分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="lor蘑菇---陷阱卡抽取問題">LoR蘑菇 - 陷阱卡抽取問題</h1>
+<p><img src="https://squarecho.github.io/assets/img/teemo.png" alt="teemo" title="LoR提摩蘑菇展示"></p>
+<h2 id="蘑菇陷阱卡說明">蘑菇陷阱卡說明</h2>
+<ol>
+<li>蘑菇會隨機種在牌庫的其中一張牌</li>
+<li>一張牌上可以有複數個蘑菇</li>
+</ol>
+<h2 id="命題">命題</h2>
+<p>給定一牌庫數量n,牌庫裡蘑菇總數量m
+求此次抽取的牌上共有幾個蘑菇？</p>
+<p>`</p>
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://squarecho.github.io/post/lor-teemo-mushroom/" rel="contents">
+      閱讀全文 &raquo;
+    </a>
+    </div>
+    
+    <footer class="post-footer"><div class="post-eof"></div></footer>
+  </article>
+
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/post/guaranteed-strengthen/" itemprop="url">
+        常見遊戲道具強化機制-保底強化模型
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2021-03-16">
+    2021-03-16
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">388 字 ~1分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="常見遊戲道具強化機制-保底強化模型">常見遊戲道具強化機制-保底強化模型</h1>
+<h2 id="命題">命題</h2>
+<p>給定固定強化成功率x與固定保底值T，求成功強化的期望次數</p>
+<h3 id="保底強化模型規則">保底強化模型規則</h3>
+<ol>
+<li>強化成功率 $\in [0,1)$</li>
+<li>強化失敗幸運值+1</li>
+<li>幸運值超過保底值強化成功</li>
+</ol>
+<h2 id="解題">解題</h2>
+<h3 id="無保底模型">無保底模型</h3>
+<p>$E_v = \frac{1}{x}$</p>
+<h4 id="證明">證明</h4>
+<p>$$ \begin{align}
+E_v &amp;= x + 2x(1-x)+&hellip;+nx(1-x)^{n-1} \cr
+(1-x)E_v &amp;= x(1-x)+2x(1-x)^2+&hellip;+(n-1)x(1-x)^{n-1}\quad\quad\quad\quad\quad \cr
+xE_v &amp;= x+x(1-x)+2x(1-x)^2+&hellip;= x \frac{1}{1-(1-x)} = 1\cr 
+E_v &amp;= \frac{1}{x} \cr
+\end{align} $$</p>
+<h3 id="保底模型">保底模型</h3>
+<p>期望值=T次內期望值+T*(1-T次內成功機率)</p>
+<p>$E_v=\frac{1-(1-x)^T (1+Tx)}{x}+T(1-x)^T$</p>
+<p>`</p>
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://squarecho.github.io/post/guaranteed-strengthen/" rel="contents">
+      閱讀全文 &raquo;
+    </a>
+    </div>
+    
+    <footer class="post-footer"><div class="post-eof"></div></footer>
+  </article>
+
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/post/lor-arena-7wins/" itemprop="url">
+        LoR遠征 - 雙淘汰賽制分析
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2021-03-15">
+    2021-03-15
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/game" itemprop="url" rel="index">
+        <span itemprop="name">game</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">677 字 ~2分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="lor遠征---雙淘汰賽制分析">LoR遠征 - 雙淘汰賽制分析</h1>
+<p><img src="https://squarecho.github.io/assets/img/lor-arena-7wins.jpg" alt="lor-arena-7wins" title="LoR遠征展示"></p>
+<h2 id="規則">規則</h2>
+<ol>
+<li>七勝出場</li>
+<li>連續兩敗出場</li>
+<li>挑戰第七勝時僅有一次敗局機會</li>
+<li>每枚代幣共可參加兩場</li>
+<li>兩場中成績較優者為獎勵發放條件</li>
+</ol>
+<h2 id="隱含條件">隱含條件</h2>
+<p>實力表示每一局勝利的概率(期望勝率)</p>
+<h2 id="命題">命題</h2>
+<p>求實力要多高才能有一半的機率用一枚代幣獲得七勝獎勵</p>
+<p>`</p>
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://squarecho.github.io/post/lor-arena-7wins/" rel="contents">
+      閱讀全文 &raquo;
+    </a>
+    </div>
+    
+    <footer class="post-footer"><div class="post-eof"></div></footer>
+  </article>
+
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/post/lotter_paradox/" itemprop="url">
+        尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2021-03-12">
+    2021-03-12
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">282 字 ~1分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="尾牙時抽100份獎項給40人竟然三年都有人沒抽到">尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到</h1>
+<p>公司尾牙共計要發出100份獎項，參與抽獎的人數共40人，可重複中獎。有人沒拿到獎項的機率是多少？</p>
+<h2 id="解題">解題</h2>
+<h3 id="某人都沒中的機率">某人都沒中的機率</h3>
+<p>$(39/40)^{100} \approx 7.951$%</p>
+<h3 id="40個人裡有人沒中的機率">40個人裡有人沒中的機率</h3>
+<h4 id="數學模型">數學模型</h4>
+<p>根據數學排容原理：有一個沒中的機率－有兩人沒中的機率＋有三人沒中的機率．．．</p>
+<p>$C_1^{40}(39/40)^{100}-C_2^{40}(38/40)^{100}+C_3^{40}(37/40)^{100}&hellip;C_{39}^{40}(1/40)^{100} \approx 97.686$%</p>
+<p>`</p>
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://squarecho.github.io/post/lotter_paradox/" rel="contents">
+      閱讀全文 &raquo;
+    </a>
+    </div>
+    
+    <footer class="post-footer"><div class="post-eof"></div></footer>
+  </article>
+
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/post/copy/" itemprop="url">
+        Golang 拷貝技術整理
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-07-03">
+    2019-07-03
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/code" itemprop="url" rel="index">
+        <span itemprop="name">code</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">136 字 ~1分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="golang-拷貝技術整理">Golang 拷貝技術整理</h1>
+<h2 id="淺拷貝">淺拷貝</h2>
+<p>僅複製記憶體位置資訊,若修改則會連動修改</p>
+<h2 id="深拷貝">深拷貝</h2>
+<p>複製真實值,共會有兩份記憶體位置,若修改則分別修改</p>
+<p>`</p>
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://squarecho.github.io/post/copy/" rel="contents">
+      閱讀全文 &raquo;
+    </a>
+    </div>
+    
+    <footer class="post-footer"><div class="post-eof"></div></footer>
+  </article>
+
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/post/mathlove/" itemprop="url">
+        愛的方程式 LOVE Formula
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-07-03">
+    2018-07-03
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">108 字 ~1分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="愛的方程式-love-formula">愛的方程式 LOVE Formula</h1>
+<p><img src="https://squarecho.github.io/assets/img/love.png" alt="love.png" title="LOVE Formula"></p>
+<h2 id="代號意義">代號意義</h2>
+<table>
+<thead>
+<tr>
+<th>代號</th>
+<th>公式</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L</td>
+<td>$y = \frac{1}{x}$</td>
+<td>倒數：互願成為對方的倒影</td>
+</tr>
+<tr>
+<td>O</td>
+<td>$(x-15)^2+(y-5)^2=25$</td>
+<td>圈：手拉手總是圍成一個圈</td>
+</tr>
+<tr>
+<td>V</td>
+<td>$y = ｜-2(x-25) ｜$</td>
+<td>絕對值：願與妳永在正象限</td>
+</tr>
+<tr>
+<td>E</td>
+<td>$y = 7\sin(1.23y-4.4)+38$</td>
+<td>波動：兩人一起時總是心情蕩漾</td>
+</tr>
+</tbody>
+</table>
+<p>`</p>
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://squarecho.github.io/post/mathlove/" rel="contents">
+      閱讀全文 &raquo;
+    </a>
+    </div>
+    
+    <footer class="post-footer"><div class="post-eof"></div></footer>
+  </article>
+
 </section>
 
 
@@ -162,7 +800,13 @@
         
         
     
+        
+        
+          <a class="page-number" href="https://squarecho.github.io/p/2/">2</a>
+        
+        
     
+    <a class="extend next" rel="next" href="https://squarecho.github.io/p/2/"><i class="fa fa-angle-right"></i></a>
 </nav>
 
 
@@ -190,7 +834,7 @@
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="https://squarecho.github.io/post/">
-        <span class="site-state-item-count">0</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">日誌</span>
       </a>
     </div>
@@ -232,9 +876,9 @@
     </span>
     
     <span class="links-of-author-item">
-        <a href="https://gitlab.com/squarecho/" target="_blank" title="GitLab">
-            <i class="fa fa-fw fa-gitlab"></i>
-            GitLab
+        <a href="mailto:b98507006@gmail.com" target="_blank" title="Email">
+            <i class="fa fa-fw fa-envelope"></i>
+            Email
         </a>
     </span>
     
@@ -283,6 +927,39 @@
   Theme by - <a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
+
+
+<script>
+  const loadScript = (url, onloadFunction) => {
+    var newScript = document.createElement("script");
+    newScript.onerror = (oError) => {
+      throw new URIError("The script " + oError.target.src + " didn't load correctly.");
+    };
+    if (onloadFunction) { newScript.onload = onloadFunction; }
+    document.head.insertAdjacentElement('beforeend', newScript);
+    newScript.src = url;
+  }
+
+  
+  const loadMermaidOnNeed = () => {
+    if (document.querySelectorAll('.mermaid').length > 0) {
+      loadScript('https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js', () => {
+        document.head.insertAdjacentHTML("beforeend", `<style>.mermaid svg { background-color: #dadcd8 !important; }</style>`);
+        // default, dark, neutral, forest
+        mermaid.initialize({ startOnLoad: false, securityLevel: "strict", logLevel: 1, theme: "neutral" });
+        
+        
+        mermaid.init();
+        console.log("mermaid init done");
+      })
+    }
+  }
+
+  window.addEventListener('load', function (event) {
+    
+    loadMermaidOnNeed();
+  });
+</script>
       </div>
     </footer>
 

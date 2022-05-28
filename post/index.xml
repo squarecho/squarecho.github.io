@@ -6,15 +6,32 @@
     <description>Recent content in Posts on 遊戲數學平方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Thu, 03 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>公正雜湊驗證機制</title>
       <link>https://squarecho.github.io/post/provably_fair/</link>
-      <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 28 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://squarecho.github.io/post/provably_fair/</guid>
       <description>&lt;h1 id=&#34;公正雜湊驗證機制&#34;&gt;公正雜湊驗證機制&lt;/h1&gt;
 &lt;p&gt;根據雜湊不可逆原理達成的玩家信任機制。&lt;/p&gt;
+&lt;h2 id=&#34;玩家驗證角度看流程圖&#34;&gt;玩家驗證角度看流程圖&lt;/h2&gt;
+
+&lt;pre class=&#34;mermaid&#34; align=&#34;center&#34;&gt;
+sequenceDiagram
+  Client-&gt;&gt;Server: Client_Seed_A
+  Server-&gt;&gt;Client: Hashed_Server_Seed_A
+  loop Client Nonce++
+      Client-&gt;&gt;Client: Playing
+  end
+  Client-&gt;&gt;Server: new Client_Seed_B
+  Server-&gt;&gt;Client: Server_Seed_A, Hashed_Server_Seed_B
+  
+  Note left of Client: Check &#34;Server_Seed_A&#34; &amp; &#34;Hashed_Server_Seed_A&#34;
+  loop Client Nonce++
+      Client-&gt;&gt;Client: Verify By Server_Seed_A, Client_Seed_A
+  end
+&lt;/pre&gt;
 &lt;h2 id=&#34;機制概述&#34;&gt;機制概述&lt;/h2&gt;
 &lt;p&gt;根據 &lt;strong&gt;伺服器種子(Server_Seed)&lt;/strong&gt; 與 &lt;strong&gt;玩家種子(Client_Seed)&lt;/strong&gt; 產生雜湊字串(SHA512)，根據其字串上取得該遊戲結果。&lt;br&gt;
 並於是前給予玩家 &lt;strong&gt;已經雜湊的伺服器種子(Hashed_Server_Seed)&lt;/strong&gt; ，使玩家可以事後與 &lt;strong&gt;伺服器種子(Server_Seed)&lt;/strong&gt; 做雜湊驗證，讓玩家確保沒有作弊的可能性。&lt;/p&gt;
@@ -188,7 +205,7 @@ E_v &amp;amp;= \frac{1}{x} \cr
     <item>
       <title>愛的方程式 LOVE Formula</title>
       <link>https://squarecho.github.io/post/mathlove/</link>
-      <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 03 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://squarecho.github.io/post/mathlove/</guid>
       <description>&lt;h1 id=&#34;愛的方程式-love-formula&#34;&gt;愛的方程式 LOVE Formula&lt;/h1&gt;

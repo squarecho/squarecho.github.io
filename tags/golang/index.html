@@ -140,7 +140,7 @@
   <article class="post post-type-normal }}" itemscope itemtype="https://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title">
-        <a class="post-title-link" href="https://squarecho.github.io/code/copy/" itemprop="url">
+        <a class="post-title-link" href="https://squarecho.github.io/post/copy/" itemprop="url">
             <span itemprop="name">Golang 拷貝技術整理</span>
         </a>
       </h1>
@@ -214,7 +214,7 @@
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="https://squarecho.github.io/post/">
-        <span class="site-state-item-count">0</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">日誌</span>
       </a>
     </div>
@@ -256,9 +256,9 @@
     </span>
     
     <span class="links-of-author-item">
-        <a href="https://gitlab.com/squarecho/" target="_blank" title="GitLab">
-            <i class="fa fa-fw fa-gitlab"></i>
-            GitLab
+        <a href="mailto:b98507006@gmail.com" target="_blank" title="Email">
+            <i class="fa fa-fw fa-envelope"></i>
+            Email
         </a>
     </span>
     
@@ -307,6 +307,39 @@
   Theme by - <a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
+
+
+<script>
+  const loadScript = (url, onloadFunction) => {
+    var newScript = document.createElement("script");
+    newScript.onerror = (oError) => {
+      throw new URIError("The script " + oError.target.src + " didn't load correctly.");
+    };
+    if (onloadFunction) { newScript.onload = onloadFunction; }
+    document.head.insertAdjacentElement('beforeend', newScript);
+    newScript.src = url;
+  }
+
+  
+  const loadMermaidOnNeed = () => {
+    if (document.querySelectorAll('.mermaid').length > 0) {
+      loadScript('https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js', () => {
+        document.head.insertAdjacentHTML("beforeend", `<style>.mermaid svg { background-color: #dadcd8 !important; }</style>`);
+        // default, dark, neutral, forest
+        mermaid.initialize({ startOnLoad: false, securityLevel: "strict", logLevel: 1, theme: "neutral" });
+        
+        
+        mermaid.init();
+        console.log("mermaid init done");
+      })
+    }
+  }
+
+  window.addEventListener('load', function (event) {
+    
+    loadMermaidOnNeed();
+  });
+</script>
       </div>
     </footer>
 

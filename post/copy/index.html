@@ -188,22 +188,22 @@
 <h3 id="組合型別">組合型別</h3>
 <p>slice, map ,struct 單純指派視為記憶體位置複製</p>
 <h2 id="範例">範例</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>	<span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>}
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">b</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">a</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">a</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">b</span>)
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>	a <span style="color:#666">:=</span> []<span style="color:#0b0;font-weight:bold">int</span>{<span style="color:#666">1</span>, <span style="color:#666">2</span>, <span style="color:#666">3</span>}
+</span></span><span style="display:flex;"><span>	b <span style="color:#666">:=</span> a
+</span></span><span style="display:flex;"><span>	fmt.<span style="color:#00a000">Println</span>(a)
+</span></span><span style="display:flex;"><span>	fmt.<span style="color:#00a000">Println</span>(b)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">b</span>[<span style="color:#ae81ff">0</span>] = <span style="color:#ae81ff">777</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">a</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">b</span>)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>	<span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>}
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">b</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">3</span>)
-</span></span><span style="display:flex;"><span>	copy(<span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">a</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">a</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">b</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">b</span>[<span style="color:#ae81ff">0</span>] = <span style="color:#ae81ff">777</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">a</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">b</span>)
+</span></span><span style="display:flex;"><span>	b[<span style="color:#666">0</span>] = <span style="color:#666">777</span>
+</span></span><span style="display:flex;"><span>	fmt.<span style="color:#00a000">Println</span>(a)
+</span></span><span style="display:flex;"><span>	fmt.<span style="color:#00a000">Println</span>(b)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>	a <span style="color:#666">:=</span> []<span style="color:#0b0;font-weight:bold">int</span>{<span style="color:#666">1</span>, <span style="color:#666">2</span>, <span style="color:#666">3</span>}
+</span></span><span style="display:flex;"><span>	b <span style="color:#666">:=</span> <span style="color:#a2f">make</span>([]<span style="color:#0b0;font-weight:bold">int</span>, <span style="color:#666">3</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a2f">copy</span>(b, a)
+</span></span><span style="display:flex;"><span>	fmt.<span style="color:#00a000">Println</span>(a)
+</span></span><span style="display:flex;"><span>	fmt.<span style="color:#00a000">Println</span>(b)
+</span></span><span style="display:flex;"><span>	b[<span style="color:#666">0</span>] = <span style="color:#666">777</span>
+</span></span><span style="display:flex;"><span>	fmt.<span style="color:#00a000">Println</span>(a)
+</span></span><span style="display:flex;"><span>	fmt.<span style="color:#00a000">Println</span>(b)
 </span></span></code></pre></div>
     </div>
     <footer class="post-footer">
@@ -318,23 +318,23 @@
     </span>
     
     <span class="links-of-author-item">
-        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Notes">
-            <i class="fa fa-fw fa-globe"></i>
-            Notes
+        <a href="mailto:b98507006@gmail.com" target="_blank" title="Email">
+            <i class="fa fa-fw fa-envelope"></i>
+            Email
         </a>
     </span>
     
     <span class="links-of-author-item">
-        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Notes">
-            <i class="fa fa-fw fa-globe"></i>
-            Notes
+        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Draft">
+            <i class="fa fa-fw fa-book"></i>
+            Draft
         </a>
     </span>
     
     <span class="links-of-author-item">
-        <a href="https://hackmd.io/@squarecho/home" target="_blank" title="Notes">
-            <i class="fa fa-fw fa-globe"></i>
-            Notes
+        <a href="https://www.linkedin.com/in/squarecho/" target="_blank" title="Linkedin">
+            <i class="fa fa-fw fa-linkedin-square"></i>
+            Linkedin
         </a>
     </span>
     
@@ -387,6 +387,39 @@
   Theme by - <a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
+
+
+<script>
+  const loadScript = (url, onloadFunction) => {
+    var newScript = document.createElement("script");
+    newScript.onerror = (oError) => {
+      throw new URIError("The script " + oError.target.src + " didn't load correctly.");
+    };
+    if (onloadFunction) { newScript.onload = onloadFunction; }
+    document.head.insertAdjacentElement('beforeend', newScript);
+    newScript.src = url;
+  }
+
+  
+  const loadMermaidOnNeed = () => {
+    if (document.querySelectorAll('.mermaid').length > 0) {
+      loadScript('https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js', () => {
+        document.head.insertAdjacentHTML("beforeend", `<style>.mermaid svg { background-color: #dadcd8 !important; }</style>`);
+        // default, dark, neutral, forest
+        mermaid.initialize({ startOnLoad: false, securityLevel: "strict", logLevel: 1, theme: "neutral" });
+        
+        
+        mermaid.init();
+        console.log("mermaid init done");
+      })
+    }
+  }
+
+  window.addEventListener('load', function (event) {
+    
+    loadMermaidOnNeed();
+  });
+</script>
       </div>
     </footer>
 

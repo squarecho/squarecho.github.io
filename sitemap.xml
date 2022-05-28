@@ -1,3 +1,197 @@
 <search>
     
+     <entry>
+        <title>公正雜湊驗證機制</title>
+        <url>https://squarecho.github.io/post/provably_fair/</url>
+        <categories>
+          <category>math</category>
+        </categories>
+        <tags>
+          <tag>hash</tag><tag>game</tag>
+        </tags>
+        <content type="html"> 公正雜湊驗證機制 根據雜湊不可逆原理達成的玩家信任機制。
+玩家驗證角度看流程圖 sequenceDiagramClient-Server: Client_Seed_AServer-Client: Hashed_Server_Seed_Aloop Client Nonce&#43;&#43;Client-Client: PlayingendClient-Server: new Client_Seed_BServer-Client: Server_Seed_A, Hashed_Server_Seed_BNote left of Client: Check &#34;Server_Seed_A&#34; &amp; &#34;Hashed_Server_Seed_A&#34;loop Client Nonce&#43;&#43;Client-Client: Verify By Server_Seed_A, Client_Seed_Aend 機制概述 根據 伺服器種子(Server_Seed) 與 玩家種子(Client_Seed) 產生雜湊字串(SHA512)，根據其字串上取得該遊戲結果。
+並於是前給予玩家 已經雜湊的伺服器種子(Hashed_Server_Seed) ，使玩家可以事後與 伺服器種子(Server_Seed) 做雜湊驗證，讓玩家確保沒有作弊的可能性。
+驗證需求    欄位 意義     Hashed_Server_Seed 於下注前給玩家   Server_Seed 玩家更換 Client Seed 的時候再給玩家   Client_Seed 玩家可以自行更新   Nonce 隨下注次數增加(從&amp;quot;1&amp;quot;開始)    `
+`
+參考競品: Bitsler provably-fair https://www.bitsler.com/en/provably-fair
+技術細節  Hashed_Server_Seed Server_Seed 的雜湊函數使用 SHA256 取得遊戲結果的雜湊字串 的雜湊函數使用 SHA512 取得遊戲結果的雜湊字串 由 Server_Seed, Client_Seed, Nonce這三個字串決定 雜湊字串如何計算成遊戲結果的邏輯會公告  玩家驗證重點  遊戲項目事先給予的Hashed_Server_Seed與事後Server_Seed是否符合SHA256的驗證 是否可以根據SServer_Seed, Client_Seed, Nonce正確計算出遊戲結果  雜湊字串如何計算成遊戲結果的邏輯 Dice遊戲展示 公告程式碼(PHP) $seed=hash_hmac(&amp;#39;sha512&amp;#39;,$clientSeed .&amp;#39;,&amp;#39;. $nonce, $serverSeed);   $offset=0; do{  $number=substr($seed,$offset,5);  $number=hexdec($number);  $offset&#43;=5; } while($number &amp;gt; 999999);   $luckyNumber = ($number % 10000) / 100; echo $luckyNumber; hash_hmac $seed=hash_hmac(&amp;#39;sha512&amp;#39;,$clientSeed .&amp;#39;,&amp;#39;. $nonce, $serverSeed); seed為取得遊戲結果的雜湊字串
+其為一十六進制的制字串,其每個字符的值域為[0,1,2,&amp;hellip;e,f]
+do while決定number $offset=0; do{  $number=substr($seed,$offset,5);  $number=hexdec($number);  $offset&#43;=5; } while($number &amp;gt; 999999); 每五個字符取一單位，故每個單位的值域為$[0,16^5)$
+為了在十進制可以無偏誤(unbias)，故 number &amp;gt; 999999時，取下五個字符為單位
+SHA512長度共128個字符，若取完所有單位後皆 number &amp;gt; 999999，則 number會視為預設值0，
+取完所有單位的概率極低 $(\frac{16^5-999999}{16^5})^{rounddown(128/5)} \approx 4.4235346e-34$，故可視其無顯著影響。
+轉換遊戲結果並回傳 $luckyNumber = ($number % 10000) / 100; echo $luckyNumber; </content>
+    </entry>
+    
+     <entry>
+        <title>生日悖論 Birthday Paradox</title>
+        <url>https://squarecho.github.io/post/birthday_paradox/</url>
+        <categories>
+          <category>math</category>
+        </categories>
+        <tags>
+          <tag>math</tag><tag>paradox</tag>
+        </tags>
+        <content type="html"> 生日悖論 Birthday Paradox 命題 多少幾人的教室，有超過一半的概率會有其中兩個人同一天生日？
+直覺上的答案與真實值也許跟妳想的不一樣。
+基本假設  一年365天 每天生日概率相等  解題   兩個人同一天生日的機率 $1/365 \times 1/365 = 0.00000750609$
+  N個人都沒有人同一天生日的機率
+ N&amp;gt;=365 必定有兩個人在同一天生日 N&amp;lt;365 $\Pi_{n=1}^N(\frac{365-n}{365}) = \frac{365}{365}\times\frac{365-1}{365}\times&amp;hellip;\times\frac{365-N}{365}$    `
+`
+模擬程式 package main  import ( 	&amp;#34;fmt&amp;#34; 	&amp;#34;math/rand&amp;#34; 	&amp;#34;time&amp;#34; )  func main() { 	rand.Seed(time.Now().UnixNano())  	for i := 1; i &amp;lt;= 100; i&#43;&#43; { 	fmt.Println(i, &amp;#34;,&amp;#34;, stat(i)) 	}  } func stat(n int) float64 { 	measure_time := 10000.0 	hit_time := 0.0 	for t := 0.0; t &amp;lt; measure_time; t&#43;&#43; { 	if once(n) { 	hit_time&#43;&#43; 	} 	} 	return hit_time / measure_time }  func once(n int) bool { 	m := map[int]int{} 	for i := 0; i &amp;lt; n; i&#43;&#43; { 	rng := rand.Intn(365) 	m[rng]&#43;&#43; 	if m[rng] &amp;gt;= 2 { 	return true 	} 	} 	return false } func PI(N) PI(N) = $\Pi_{n=1}^N(\frac{365-n}{365}) = \frac{365}{365}\times\frac{365-1}{365}\times&amp;hellip;\times\frac{365-N}{365}$
+func PI(n int) float64 { 	if n &amp;gt;= 365 { 	return 0.0 	} 	ans := 1.0 	for i := 1; i &amp;lt;= n; i&#43;&#43; { 	ans *= (365.0 - float64(i-1)) 	ans /= 365.0 	} 	return ans } 整合表格    index 1-PI(N) 模擬結果 index 1-PI(N) 模擬結果     1 0.000000 0.000000 51 0.974432 0.971100   2 0.002740 0.002600 52 0.978005 0.976800   3 0.008204 0.010300 53 0.981138 0.981100   4 0.016356 0.015100 54 0.983877 0.983700   5 0.027136 0.028400 55 0.986262 0.986200   6 0.040462 0.041800 56 0.988332 0.989900   7 0.056236 0.057200 57 0.990122 0.988000   8 0.074335 0.069100 58 0.991665 0.994400   9 0.094624 0.088400 59 0.992989 0.992300   10 0.116948 0.120200 60 0.994123 0.994100   11 0.141141 0.138500 61 0.995089 0.994300   12 0.167025 0.168700 62 0.995910 0.995500   13 0.194410 0.199300 63 0.996604 0.997100   14 0.223103 0.224000 64 0.997190 0.997200   15 0.252901 0.249900 65 0.997683 0.998400   16 0.283604 0.289400 66 0.998096 0.998000   17 0.315008 0.315500 67 0.998440 0.998800   18 0.346911 0.350100 68 0.998726 0.999200   19 0.379119 0.368700 69 0.998964 0.998700   20 0.411438 0.415500 70 0.999160 0.999300   21 0.443688 0.444900 71 0.999321 0.999200   22 0.475695 0.476900 72 0.999453 0.999700   23 0.507297 0.499800 73 0.999561 0.999700   24 0.538344 0.546600 74 0.999649 0.999700   25 0.568700 0.574800 75 0.999720 0.999700   26 0.598241 0.595500 76 0.999777 0.999700   27 0.626859 0.625500 77 0.999824 0.999800   28 0.654461 0.654300 78 0.999861 0.999900   29 0.680969 0.680900 79 0.999891 0.999700   30 0.706316 0.701500 80 0.999914 1.000000   31 0.730455 0.730200 81 0.999933 1.000000   32 0.753348 0.751900 82 0.999948 1.000000   33 0.774972 0.775300 83 0.999960 1.000000   34 0.795317 0.797600 84 0.999969 1.000000   35 0.814383 0.821400 85 0.999976 1.000000   36 0.832182 0.838200 86 0.999982 0.999900   37 0.848734 0.846700 87 0.999986 1.000000   38 0.864068 0.862700 88 0.999989 1.000000   39 0.878220 0.877300 89 0.999992 1.000000   40 0.891232 0.891800 90 0.999994 1.000000   41 0.903152 0.905100 91 0.999995 1.000000   42 0.914030 0.918900 92 0.999997 1.000000   43 0.923923 0.923300 93 0.999997 1.000000   44 0.932885 0.932400 94 0.999998 1.000000   45 0.940976 0.945300 95 0.999999 1.000000   46 0.948253 0.946200 96 0.999999 1.000000   47 0.954774 0.955300 97 0.999999 1.000000   48 0.960598 0.960700 98 0.999999 1.000000   49 0.965780 0.965100 99 1.000000 1.000000   50 0.970374 0.972600 100 1.000000 1.000000    結論 約23人即可滿足要求，常見國中小的班級人數已超過此數量
+</content>
+    </entry>
+    
+     <entry>
+        <title>LoR蘑菇 - 陷阱卡抽取問題</title>
+        <url>https://squarecho.github.io/post/lor-teemo-mushroom/</url>
+        <categories>
+          <category>game</category>
+        </categories>
+        <tags>
+          <tag>math</tag><tag>game</tag>
+        </tags>
+        <content type="html"> LoR蘑菇 - 陷阱卡抽取問題 蘑菇陷阱卡說明  蘑菇會隨機種在牌庫的其中一張牌 一張牌上可以有複數個蘑菇  命題 給定一牌庫數量n,牌庫裡蘑菇總數量m 求此次抽取的牌上共有幾個蘑菇？
+`
+`
+解題 公式解 $P(n,m,k)=C^m_k\cdot(\frac{1}{n})^k\cdot(\frac{n-1}{n})^{m-k}$
+n=牌庫剩餘值 m=蘑菇總數量 k=抽出蘑菇數量
+$$ \begin{align} P(n,1,1)&amp;amp;= \frac {1}{n} \cr P(n,2,1)&amp;amp;=2 \times \frac {1}{n} \times \frac {n-1}{n} \cr P(n,2,2)&amp;amp;={( \frac {1}{n})}^2 \cr P(10,20,2)&amp;amp;=C^{20}_2 \times ( \frac {1}{10})^2 \times ( \frac {9}{10})^{18} \approx 0.2852 \end{align} $$
+表列整理    k P(10,10,k) P(10,20,k) P(10,30,k) P(10,40,k)     0 34.86% 12.15% 4.23% 1.47%   1 38.74% 27.01% 14.13% 6.56%   2 19.37% 28.51% 22.76% 14.23%   3 5.73% 19.01% 23.60% 20.03%   4 1.11% 8.97% 17.70% 20.58%   5 0.14% 3.19% 10.23% 16.47%   6 0.01% 0.88% 4.73% 10.67%   7 0.00% 0.19% 1.80% 5.76%   8 0.00% 0.03% 0.57% 2.64%   9 0.00% 0.00% 0.15% 1.04%   10 0.00% 0.00% 0.03% 0.35%   11 0.00% 0.00% 0.00% 0.10%   12 0.00% 0.00% 0.00% 0.02%   13 0.00% 0.00% 0.00% 0.00%   14 0.00% 0.00% 0.00% 0.00%   15 0.00% 0.00% 0.00% 0.00%     小心地上有蘑菇~
+</content>
+    </entry>
+    
+     <entry>
+        <title>常見遊戲道具強化機制-保底強化模型</title>
+        <url>https://squarecho.github.io/post/guaranteed-strengthen/</url>
+        <categories>
+          <category>math</category>
+        </categories>
+        <tags>
+          <tag>math</tag><tag>game</tag>
+        </tags>
+        <content type="html"> 常見遊戲道具強化機制-保底強化模型 命題 給定固定強化成功率x與固定保底值T，求成功強化的期望次數
+保底強化模型規則  強化成功率 $\in [0,1)$ 強化失敗幸運值&#43;1 幸運值超過保底值強化成功  解題 無保底模型 $E_v = \frac{1}{x}$
+證明 $$ \begin{align} E_v &amp;amp;= x &#43; 2x(1-x)&#43;&amp;hellip;&#43;nx(1-x)^{n-1} \cr (1-x)E_v &amp;amp;= x(1-x)&#43;2x(1-x)^2&#43;&amp;hellip;&#43;(n-1)x(1-x)^{n-1}\quad\quad\quad\quad\quad \cr xE_v &amp;amp;= x&#43;x(1-x)&#43;2x(1-x)^2&#43;&amp;hellip;= x \frac{1}{1-(1-x)} = 1\cr E_v &amp;amp;= \frac{1}{x} \cr \end{align} $$
+保底模型 期望值=T次內期望值&#43;T*(1-T次內成功機率)
+$E_v=\frac{1-(1-x)^T (1&#43;Tx)}{x}&#43;T(1-x)^T$
+`
+`
+數值展示    T\x 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%     2 1.90 1.80 1.70 1.60 1.50 1.40 1.30 1.20 1.10 1.00   3 2.71 2.44 2.19 1.96 1.75 1.56 1.39 1.24 1.11 1.00   4 3.44 2.95 2.53 2.18 1.88 1.62 1.42 1.25 1.11 1.00   5 4.10 3.36 2.77 2.31 1.94 1.65 1.43 1.25 1.11 1.00   6 4.69 3.69 2.94 2.38 1.97 1.66 1.43 1.25 1.11 1.00   7 5.22 3.95 3.06 2.43 1.98 1.66 1.43 1.25 1.11 1.00   8 5.70 4.16 3.14 2.46 1.99 1.67 1.43 1.25 1.11 1.00   9 6.13 4.33 3.20 2.47 2.00 1.67 1.43 1.25 1.11 1.00   10 6.51 4.46 3.24 2.48 2.00 1.67 1.43 1.25 1.11 1.00   11 6.86 4.57 3.27 2.49 2.00 1.67 1.43 1.25 1.11 1.00   12 7.18 4.66 3.29 2.49 2.00 1.67 1.43 1.25 1.11 1.00   13 7.46 4.73 3.30 2.50 2.00 1.67 1.43 1.25 1.11 1.00   14 7.71 4.78 3.31 2.50 2.00 1.67 1.43 1.25 1.11 1.00   15 7.94 4.82 3.32 2.50 2.00 1.67 1.43 1.25 1.11 1.00   16 8.15 4.86 3.32 2.50 2.00 1.67 1.43 1.25 1.11 1.00   17 8.33 4.89 3.33 2.50 2.00 1.67 1.43 1.25 1.11 1.00   18 8.50 4.91 3.33 2.50 2.00 1.67 1.43 1.25 1.11 1.00   19 8.65 4.93 3.33 2.50 2.00 1.67 1.43 1.25 1.11 1.00   20 8.78 4.94 3.33 2.50 2.00 1.67 1.43 1.25 1.11 1.00   無限 10.00 5.00 3.33 2.50 2.00 1.67 1.43 1.25 1.11 1.00   </content>
+    </entry>
+    
+     <entry>
+        <title>LoR遠征 - 雙淘汰賽制分析</title>
+        <url>https://squarecho.github.io/post/lor-arena-7wins/</url>
+        <categories>
+          <category>game</category>
+        </categories>
+        <tags>
+          <tag>math</tag><tag>game</tag>
+        </tags>
+        <content type="html"> LoR遠征 - 雙淘汰賽制分析 規則  七勝出場 連續兩敗出場 挑戰第七勝時僅有一次敗局機會 每枚代幣共可參加兩場 兩場中成績較優者為獎勵發放條件  隱含條件 實力表示每一局勝利的概率(期望勝率)
+命題 求實力要多高才能有一半的機率用一枚代幣獲得七勝獎勵
+`
+`
+解題 每場可能性 敗敗:0勝 敗勝敗敗:1勝 敗勝敗勝敗敗:2勝 敗勝敗勝敗勝敗敗:3勝 敗勝敗勝敗勝敗勝敗敗:4勝 敗勝敗勝敗勝敗勝敗勝敗敗:5勝 敗勝敗勝敗勝敗勝敗勝敗勝敗:6勝 敗勝敗勝敗勝敗勝敗勝敗勝勝:7勝 ... 勝勝勝勝勝勝勝:7勝 機率公式 $$ \begin{align} P_{win0}&amp;amp;=(1-p)^2 \cr P _ {winN} &amp;amp;= \sum _ {i=0} ^ n C _ i^n p^n \times (1-p) ^ {2&#43;i} \cr P _ {win6} &amp;amp;= \sum _ {i=0} ^ 6 C _ i^6 p^6 \times (1-p) ^ {1&#43;i} \cr P _ {win7} &amp;amp;= \sum _ {i=0} ^ 6 C _ i^6 p^7 \times(1-p) ^ {i} \end{align} $$
+數學模型展示    勝率 0勝 1勝 2勝 3勝 4勝 5勝 6勝 7勝     10% 81.0% 15.4% 2.9% 0.6% 0.1% 0.0% 0.0% 0.0%   20% 64.0% 23.0% 8.3% 3.0% 1.1% 0.4% 0.2% 0.0%   30% 49.0% 25.0% 12.7% 6.5% 3.3% 1.7% 1.2% 0.5%   40% 36.0% 23.0% 14.7% 9.4% 6.0% 3.9% 4.1% 2.7%   50% 25.0% 18.8% 14.1% 10.5% 7.9% 5.9% 8.9% 8.9%   60% 16.0% 13.4% 11.3% 9.5% 8.0% 6.7% 14.1% 21.1%   70% 9.0% 8.2% 7.5% 6.8% 6.2% 5.6% 17.0% 39.8%   80% 4.0% 3.8% 3.7% 3.5% 3.4% 3.3% 15.7% 62.6%   90% 1.0% 1.0% 1.0% 1.0% 1.0% 1.0% 9.4% 84.7%    模擬模型 func getWinProbability(p float64, n int) float64 { 	if n == 0 { 	return (1 - p) * (1 - p) 	} 	ans := 0.0 	if n == 6 { 	for i := 0; i &amp;lt;= 6; i&#43;&#43; { 	ans &#43;= float64(combin.Binomial(6, i)) * math.Pow(p, float64(6)) * math.Pow(1-p, float64(1&#43;i)) 	} 	return ans 	} 	if n == 7 { 	for i := 0; i &amp;lt;= 6; i&#43;&#43; { 	ans &#43;= float64(combin.Binomial(6, i)) * math.Pow(p, float64(7)) * math.Pow(1-p, float64(i)) 	} 	return ans 	} 	for i := 0; i &amp;lt;= n; i&#43;&#43; { 	ans &#43;= float64(combin.Binomial(n, i)) * math.Pow(p, float64(n)) * math.Pow(1-p, float64(2&#43;i)) 	} 	return ans } 兩場擇優效應 \begin{align} P^*_0&amp;amp;=P_0^2 \cr P^*_1&amp;amp;=P_1^2&#43;2\times P_1\times P_0 \cr P^*_2&amp;amp;=P_2^2&#43;2\times P_2\times (P_0&#43;P_1) \cr P^*_n&amp;amp;=P_n^2&#43;2\times P_n\times \sum _ {i=0} ^ {n-1} (P_i) \cr P^*_7&amp;amp;=1-(1-P_7)^2 \end{align}
+   勝率 0勝 1勝 2勝 3勝 4勝 5勝 6勝 7勝     10% 65.6% 27.3% 5.7% 1.1% 0.2% 0.0% 0.0% 0.0%   20% 41.0% 34.8% 15.1% 5.8% 2.1% 0.8% 0.3% 0.1%   30% 24.0% 30.7% 20.5% 11.7% 6.3% 3.3% 2.4% 1.1%   40% 13.0% 21.9% 19.6% 14.8% 10.4% 7.1% 7.8% 5.4%   50% 6.2% 12.9% 14.3% 13.3% 11.4% 9.4% 15.4% 17.0%   60% 2.6% 6.1% 7.9% 8.6% 8.6% 8.2% 20.2% 37.7%   70% 0.8% 2.1% 3.1% 3.8% 4.3% 4.5% 17.6% 63.7%   80% 0.2% 0.5% 0.7% 0.9% 1.1% 1.3% 9.3% 86.0%   90% 0.0% 0.0% 0.0% 0.1% 0.1% 0.1% 2.0% 97.7%    小結 實力(勝率)需要接近七成,在兩次的機會裡面拿到七勝的機率超過一半
+ 能把握的只有自己的實力，其他都浮雲
+</content>
+    </entry>
+    
+     <entry>
+        <title>尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到</title>
+        <url>https://squarecho.github.io/post/lotter_paradox/</url>
+        <categories>
+          <category>math</category>
+        </categories>
+        <tags>
+          <tag>math</tag><tag>paradox</tag>
+        </tags>
+        <content type="html"> 尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到 公司尾牙共計要發出100份獎項，參與抽獎的人數共40人，可重複中獎。有人沒拿到獎項的機率是多少？
+解題 某人都沒中的機率 $(39/40)^{100} \approx 7.951$%
+40個人裡有人沒中的機率 數學模型 根據數學排容原理：有一個沒中的機率－有兩人沒中的機率＋有三人沒中的機率．．．
+$C_1^{40}(39/40)^{100}-C_2^{40}(38/40)^{100}&#43;C_3^{40}(37/40)^{100}&amp;hellip;C_{39}^{40}(1/40)^{100} \approx 97.686$%
+`
+`
+模擬模型 根據蒙地卡羅法進行快速估算 $\approx 97.3$%
+package main  import ( 	&amp;#34;fmt&amp;#34; 	&amp;#34;math/rand&amp;#34; 	&amp;#34;time&amp;#34; )  func main() { 	rand.Seed(time.Now().UnixNano()) 	count := 0 	times := 100000 	for i := 0; i &amp;lt; times; i&#43;&#43; { 	if getDev() { 	count&#43;&#43; 	} 	} 	fmt.Println(float64(count) / float64(times)) }  func getDev() bool { 	stat := map[int]int{} 	for i := 0; i &amp;lt;= 100; i&#43;&#43; { 	a := rand.Intn(40) 	stat[a]&#43;&#43; 	}  	for i := 0; i &amp;lt; 40; i&#43;&#43; { 	if stat[i] == 0 { 	return true 	} 	} 	return false } 小評 可以發現有人沒中的機率很高，高達97%，據聞該公司已經連三年都有人沒中！
+</content>
+    </entry>
+    
+     <entry>
+        <title>Golang 拷貝技術整理</title>
+        <url>https://squarecho.github.io/post/copy/</url>
+        <categories>
+          <category>code</category>
+        </categories>
+        <tags>
+          <tag>golang</tag>
+        </tags>
+        <content type="html"> Golang 拷貝技術整理 淺拷貝 僅複製記憶體位置資訊,若修改則會連動修改
+深拷貝 複製真實值,共會有兩份記憶體位置,若修改則分別修改
+`
+`
+性質整理 基本型別 string, int, float64, bool 單純指派視為值複製
+組合型別 slice, map ,struct 單純指派視為記憶體位置複製
+範例 	a := []int{1, 2, 3} 	b := a 	fmt.Println(a) 	fmt.Println(b)  	b[0] = 777 	fmt.Println(a) 	fmt.Println(b) 	a := []int{1, 2, 3} 	b := make([]int, 3) 	copy(b, a) 	fmt.Println(a) 	fmt.Println(b) 	b[0] = 777 	fmt.Println(a) 	fmt.Println(b) </content>
+    </entry>
+    
+     <entry>
+        <title>愛的方程式 LOVE Formula</title>
+        <url>https://squarecho.github.io/post/mathlove/</url>
+        <categories>
+          <category>math</category>
+        </categories>
+        <tags>
+          <tag>game</tag>
+        </tags>
+        <content type="html"> 愛的方程式 LOVE Formula 代號意義    代號 公式 意義     L $y = \frac{1}{x}$ 倒數：互願成為對方的倒影   O $(x-15)^2&#43;(y-5)^2=25$ 圈：手拉手總是圍成一個圈   V $y = ｜-2(x-25) ｜$ 絕對值：願與妳永在正象限   E $y = 7\sin(1.23y-4.4)&#43;38$ 波動：兩人一起時總是心情蕩漾    `
+`
+ 線上數學作圖連結分享 Desmos: www.desmos.com/calculator/o7dksfmlll
+Geogebra : www.geogebra.org/calculator/wfmr7cpu
+</content>
+    </entry>
+    
+     <entry>
+        <title>Rummi 拉密分析</title>
+        <url>https://squarecho.github.io/post/rummi/</url>
+        <categories>
+          <category>game</category>
+        </categories>
+        <tags>
+          <tag>game</tag>
+        </tags>
+        <content type="html"> Rummi 拉密分析    順或群 沒有百搭 一張百搭 兩張百搭 總和     三順 44 92 52 188   四順 40 124 132 296   五順 36 148 233 417   三群 52 78 0 130   四群 13 52 78 143   總和 185 494 495 1174    `
+`
+i屬於I [1,2,3,&amp;hellip;,53]
+j屬於J [1,2,&amp;hellip;]
+努力撰寫中&amp;hellip;
+</content>
+    </entry>
+    
+     <entry>
+        <title>常用工具連結</title>
+        <url>https://squarecho.github.io/post/toollink/</url>
+        <categories>
+          <category>note</category>
+        </categories>
+        <tags>
+          <tag>tool</tag>
+        </tags>
+        <content type="html"> 常用工具連結 數學作圖 https://www.geogebra.org/
+https://www.desmos.com/ 
+2D作圖 https://app.diagrams.net/
+https://www.canva.com/
+VISA 匯率轉換 VISA 匯率轉換_TWDSGD
+VISA 匯率轉換_SGDTWD
+`
+`
+ 工欲善其事，必先利其器～
+</content>
+    </entry>
+    
 </search>
