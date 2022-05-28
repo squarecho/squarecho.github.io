@@ -5,14 +5,14 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>關於遊戲數學平方 - 遊戲數學平方</title>
+  <title>常見遊戲道具強化機制-保底強化模型 - 遊戲數學平方</title>
   
   <meta name="keywords" content="遊戲數學平方,團對,思考,筆記,技術,分享,Golang">
   
-  <meta property="og:title" content="關於遊戲數學平方">
+  <meta property="og:title" content="常見遊戲道具強化機制-保底強化模型">
   <meta property="og:site_name" content="遊戲數學平方">
   <meta property="og:image" content="/assets/img/author.jpg">
-  <meta name="title" content="關於遊戲數學平方 - 遊戲數學平方" />
+  <meta name="title" content="常見遊戲道具強化機制-保底強化模型 - 遊戲數學平方" />
   
   <meta name="description" content="遊戲數學平方 | 部落格 | 遊戲 | 數學 | 後端 | Golang">
   <link rel="shortcut icon" href="https://squarecho.github.io/assets/img/logo.png" />
@@ -131,8 +131,8 @@
   <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://squarecho.github.io/about/" itemprop="url">
-          關於遊戲數學平方
+        <a class="post-title-link" href="https://squarecho.github.io/post/guaranteed-strengthen/" itemprop="url">
+          常見遊戲道具強化機制-保底強化模型
         </a>
       </h1>
       <div class="post-meta">
@@ -141,11 +141,27 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">時間:</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2022-05-26">
-    2022-05-26
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2021-03-16">
+    2021-03-16
 </time>
 </span>
         
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
 
 
          <span>
@@ -154,43 +170,342 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">閱讀:</span>
-<span class="leancloud-visitors-count">143 字 ~1分鐘</span>
+<span class="leancloud-visitors-count">388 字 ~1分鐘</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-      <h1 id="歡迎來到遊戲數學平方">歡迎來到遊戲數學平方</h1>
-<p>Welcome to $Game Math^2$.<br>
-期許此地可以成為對遊戲有熱情的交流之地。<br>
-<a href="../post/mathlove/"><img src="https://squarecho.github.io/assets/img/love.png" alt="love.png" title="點選後連結至愛的方程式"></a></p>
-<h2 id="內容">內容</h2>
-<p>領域：遊戲業、加密貨幣。<br>
-技能：數學技巧、產業經驗、程式碼分享。</p>
-<h2 id="作者">作者</h2>
-<p>Square Cho<br>
-<img src="https://squarecho.github.io/assets/img/author.jpg" alt="Square Cho" title="Square Cho"></p>
-<blockquote>
-<p>把自己角色扮演好，全力以赴每一秒。</p>
-</blockquote>
-<h2 id="聲明">聲明</h2>
-<p>本站內容由<a href="">Square Cho</a>製作，以<a href="https://creativecommons.org/licenses/by-nc/4.0/">創用CC 姓名標示-非商業性 4.0 國際</a> 授權條款釋出。<br>
-若有商業需求請來信聯絡 <a href="mailto:b98507006@gmail.com">b98507006@gmail.com</a></p>
-
+      <h1 id="常見遊戲道具強化機制-保底強化模型">常見遊戲道具強化機制-保底強化模型</h1>
+<h2 id="命題">命題</h2>
+<p>給定固定強化成功率x與固定保底值T，求成功強化的期望次數</p>
+<h3 id="保底強化模型規則">保底強化模型規則</h3>
+<ol>
+<li>強化成功率 $\in [0,1)$</li>
+<li>強化失敗幸運值+1</li>
+<li>幸運值超過保底值強化成功</li>
+</ol>
+<h2 id="解題">解題</h2>
+<h3 id="無保底模型">無保底模型</h3>
+<p>$E_v = \frac{1}{x}$</p>
+<h4 id="證明">證明</h4>
+<p>$$ \begin{align}
+E_v &amp;= x + 2x(1-x)+&hellip;+nx(1-x)^{n-1} \cr
+(1-x)E_v &amp;= x(1-x)+2x(1-x)^2+&hellip;+(n-1)x(1-x)^{n-1}\quad\quad\quad\quad\quad \cr
+xE_v &amp;= x+x(1-x)+2x(1-x)^2+&hellip;= x \frac{1}{1-(1-x)} = 1\cr 
+E_v &amp;= \frac{1}{x} \cr
+\end{align} $$</p>
+<h3 id="保底模型">保底模型</h3>
+<p>期望值=T次內期望值+T*(1-T次內成功機率)</p>
+<p>$E_v=\frac{1-(1-x)^T (1+Tx)}{x}+T(1-x)^T$</p>
+<p>`</p>
+<p>`</p>
+<h3 id="數值展示">數值展示</h3>
+<table>
+<thead>
+<tr>
+<th>T\x</th>
+<th>10%</th>
+<th>20%</th>
+<th>30%</th>
+<th>40%</th>
+<th>50%</th>
+<th>60%</th>
+<th>70%</th>
+<th>80%</th>
+<th>90%</th>
+<th>100%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>1.90</td>
+<td>1.80</td>
+<td>1.70</td>
+<td>1.60</td>
+<td>1.50</td>
+<td>1.40</td>
+<td>1.30</td>
+<td>1.20</td>
+<td>1.10</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2.71</td>
+<td>2.44</td>
+<td>2.19</td>
+<td>1.96</td>
+<td>1.75</td>
+<td>1.56</td>
+<td>1.39</td>
+<td>1.24</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3.44</td>
+<td>2.95</td>
+<td>2.53</td>
+<td>2.18</td>
+<td>1.88</td>
+<td>1.62</td>
+<td>1.42</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>5</td>
+<td>4.10</td>
+<td>3.36</td>
+<td>2.77</td>
+<td>2.31</td>
+<td>1.94</td>
+<td>1.65</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>6</td>
+<td>4.69</td>
+<td>3.69</td>
+<td>2.94</td>
+<td>2.38</td>
+<td>1.97</td>
+<td>1.66</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>7</td>
+<td>5.22</td>
+<td>3.95</td>
+<td>3.06</td>
+<td>2.43</td>
+<td>1.98</td>
+<td>1.66</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>8</td>
+<td>5.70</td>
+<td>4.16</td>
+<td>3.14</td>
+<td>2.46</td>
+<td>1.99</td>
+<td>1.67</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>9</td>
+<td>6.13</td>
+<td>4.33</td>
+<td>3.20</td>
+<td>2.47</td>
+<td>2.00</td>
+<td>1.67</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>10</td>
+<td>6.51</td>
+<td>4.46</td>
+<td>3.24</td>
+<td>2.48</td>
+<td>2.00</td>
+<td>1.67</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>11</td>
+<td>6.86</td>
+<td>4.57</td>
+<td>3.27</td>
+<td>2.49</td>
+<td>2.00</td>
+<td>1.67</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>12</td>
+<td>7.18</td>
+<td>4.66</td>
+<td>3.29</td>
+<td>2.49</td>
+<td>2.00</td>
+<td>1.67</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>13</td>
+<td>7.46</td>
+<td>4.73</td>
+<td>3.30</td>
+<td>2.50</td>
+<td>2.00</td>
+<td>1.67</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>14</td>
+<td>7.71</td>
+<td>4.78</td>
+<td>3.31</td>
+<td>2.50</td>
+<td>2.00</td>
+<td>1.67</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>15</td>
+<td>7.94</td>
+<td>4.82</td>
+<td>3.32</td>
+<td>2.50</td>
+<td>2.00</td>
+<td>1.67</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>16</td>
+<td>8.15</td>
+<td>4.86</td>
+<td>3.32</td>
+<td>2.50</td>
+<td>2.00</td>
+<td>1.67</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>17</td>
+<td>8.33</td>
+<td>4.89</td>
+<td>3.33</td>
+<td>2.50</td>
+<td>2.00</td>
+<td>1.67</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>18</td>
+<td>8.50</td>
+<td>4.91</td>
+<td>3.33</td>
+<td>2.50</td>
+<td>2.00</td>
+<td>1.67</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>19</td>
+<td>8.65</td>
+<td>4.93</td>
+<td>3.33</td>
+<td>2.50</td>
+<td>2.00</td>
+<td>1.67</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>20</td>
+<td>8.78</td>
+<td>4.94</td>
+<td>3.33</td>
+<td>2.50</td>
+<td>2.00</td>
+<td>1.67</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>無限</td>
+<td>10.00</td>
+<td>5.00</td>
+<td>3.33</td>
+<td>2.50</td>
+<td>2.00</td>
+<td>1.67</td>
+<td>1.43</td>
+<td>1.25</td>
+<td>1.11</td>
+<td>1.00</td>
+</tr>
+</tbody>
+</table>
     </div>
     <footer class="post-footer">
       
+ 
+<div class="post-tags">     
+     
+    <a href="https://squarecho.github.io/tags/math" rel="tag" title="math">#math#</a>
+    
+    <a href="https://squarecho.github.io/tags/game" rel="tag" title="game">#game#</a>
+    
+</div>
 
 
 
       <div class="post-nav">
     <div class="post-nav-next post-nav-item">
         
+        <a href="https://squarecho.github.io/post/birthday_paradox/" rel="next" title="生日悖論 Birthday Paradox">
+            <i class="fa fa-chevron-left"></i> 生日悖論 Birthday Paradox
+        </a>
+        
     </div>
 
     <div class="post-nav-prev post-nav-item">
         
-        <a href="https://squarecho.github.io/post/provably_fair/" rel="prev" title="公正雜湊驗證機制">
-            公正雜湊驗證機制 <i class="fa fa-chevron-right"></i>
+        <a href="https://squarecho.github.io/post/lotter_paradox/" rel="prev" title="尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到">
+            尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到 <i class="fa fa-chevron-right"></i>
         </a>
         
     </div>
@@ -313,9 +628,18 @@
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
-    <li><a href="#內容">內容</a></li>
-    <li><a href="#作者">作者</a></li>
-    <li><a href="#聲明">聲明</a></li>
+    <li><a href="#命題">命題</a>
+      <ul>
+        <li><a href="#保底強化模型規則">保底強化模型規則</a></li>
+      </ul>
+    </li>
+    <li><a href="#解題">解題</a>
+      <ul>
+        <li><a href="#無保底模型">無保底模型</a></li>
+        <li><a href="#保底模型">保底模型</a></li>
+        <li><a href="#數值展示">數值展示</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div>

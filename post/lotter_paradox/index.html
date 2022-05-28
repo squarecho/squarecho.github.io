@@ -5,14 +5,14 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>關於遊戲數學平方 - 遊戲數學平方</title>
+  <title>尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到 - 遊戲數學平方</title>
   
   <meta name="keywords" content="遊戲數學平方,團對,思考,筆記,技術,分享,Golang">
   
-  <meta property="og:title" content="關於遊戲數學平方">
+  <meta property="og:title" content="尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到">
   <meta property="og:site_name" content="遊戲數學平方">
   <meta property="og:image" content="/assets/img/author.jpg">
-  <meta name="title" content="關於遊戲數學平方 - 遊戲數學平方" />
+  <meta name="title" content="尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到 - 遊戲數學平方" />
   
   <meta name="description" content="遊戲數學平方 | 部落格 | 遊戲 | 數學 | 後端 | Golang">
   <link rel="shortcut icon" href="https://squarecho.github.io/assets/img/logo.png" />
@@ -131,8 +131,8 @@
   <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://squarecho.github.io/about/" itemprop="url">
-          關於遊戲數學平方
+        <a class="post-title-link" href="https://squarecho.github.io/post/lotter_paradox/" itemprop="url">
+          尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到
         </a>
       </h1>
       <div class="post-meta">
@@ -141,11 +141,27 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">時間:</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2022-05-26">
-    2022-05-26
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2021-03-12">
+    2021-03-12
 </time>
 </span>
         
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
 
 
          <span>
@@ -154,43 +170,87 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">閱讀:</span>
-<span class="leancloud-visitors-count">143 字 ~1分鐘</span>
+<span class="leancloud-visitors-count">282 字 ~1分鐘</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-      <h1 id="歡迎來到遊戲數學平方">歡迎來到遊戲數學平方</h1>
-<p>Welcome to $Game Math^2$.<br>
-期許此地可以成為對遊戲有熱情的交流之地。<br>
-<a href="../post/mathlove/"><img src="https://squarecho.github.io/assets/img/love.png" alt="love.png" title="點選後連結至愛的方程式"></a></p>
-<h2 id="內容">內容</h2>
-<p>領域：遊戲業、加密貨幣。<br>
-技能：數學技巧、產業經驗、程式碼分享。</p>
-<h2 id="作者">作者</h2>
-<p>Square Cho<br>
-<img src="https://squarecho.github.io/assets/img/author.jpg" alt="Square Cho" title="Square Cho"></p>
-<blockquote>
-<p>把自己角色扮演好，全力以赴每一秒。</p>
-</blockquote>
-<h2 id="聲明">聲明</h2>
-<p>本站內容由<a href="">Square Cho</a>製作，以<a href="https://creativecommons.org/licenses/by-nc/4.0/">創用CC 姓名標示-非商業性 4.0 國際</a> 授權條款釋出。<br>
-若有商業需求請來信聯絡 <a href="mailto:b98507006@gmail.com">b98507006@gmail.com</a></p>
-
+      <h1 id="尾牙時抽100份獎項給40人竟然三年都有人沒抽到">尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到</h1>
+<p>公司尾牙共計要發出100份獎項，參與抽獎的人數共40人，可重複中獎。有人沒拿到獎項的機率是多少？</p>
+<h2 id="解題">解題</h2>
+<h3 id="某人都沒中的機率">某人都沒中的機率</h3>
+<p>$(39/40)^{100} \approx 7.951$%</p>
+<h3 id="40個人裡有人沒中的機率">40個人裡有人沒中的機率</h3>
+<h4 id="數學模型">數學模型</h4>
+<p>根據數學排容原理：有一個沒中的機率－有兩人沒中的機率＋有三人沒中的機率．．．</p>
+<p>$C_1^{40}(39/40)^{100}-C_2^{40}(38/40)^{100}+C_3^{40}(37/40)^{100}&hellip;C_{39}^{40}(1/40)^{100} \approx 97.686$%</p>
+<p>`</p>
+<p>`</p>
+<h4 id="模擬模型">模擬模型</h4>
+<p>根據蒙地卡羅法進行快速估算  $\approx 97.3$%</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;math/rand&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Seed</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">UnixNano</span>())
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">count</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">times</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">100000</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">times</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">getDev</span>() {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(float64(<span style="color:#a6e22e">count</span>) <span style="color:#f92672">/</span> float64(<span style="color:#a6e22e">times</span>))
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getDev</span>() <span style="color:#66d9ef">bool</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">stat</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">int</span>{}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">100</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Intn</span>(<span style="color:#ae81ff">40</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">stat</span>[<span style="color:#a6e22e">a</span>]<span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">40</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">stat</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="小評">小評</h2>
+<p>可以發現有人沒中的機率很高，高達97%，據聞該公司已經連三年都有人沒中！</p>
     </div>
     <footer class="post-footer">
       
+ 
+<div class="post-tags">     
+     
+    <a href="https://squarecho.github.io/tags/math" rel="tag" title="math">#math#</a>
+    
+    <a href="https://squarecho.github.io/tags/paradox" rel="tag" title="paradox">#paradox#</a>
+    
+</div>
 
 
 
       <div class="post-nav">
     <div class="post-nav-next post-nav-item">
         
+        <a href="https://squarecho.github.io/post/guaranteed-strengthen/" rel="next" title="常見遊戲道具強化機制-保底強化模型">
+            <i class="fa fa-chevron-left"></i> 常見遊戲道具強化機制-保底強化模型
+        </a>
+        
     </div>
 
     <div class="post-nav-prev post-nav-item">
         
-        <a href="https://squarecho.github.io/post/provably_fair/" rel="prev" title="公正雜湊驗證機制">
-            公正雜湊驗證機制 <i class="fa fa-chevron-right"></i>
+        <a href="https://squarecho.github.io/post/copy/" rel="prev" title="Golang 拷貝技術整理">
+            Golang 拷貝技術整理 <i class="fa fa-chevron-right"></i>
         </a>
         
     </div>
@@ -313,9 +373,13 @@
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
-    <li><a href="#內容">內容</a></li>
-    <li><a href="#作者">作者</a></li>
-    <li><a href="#聲明">聲明</a></li>
+    <li><a href="#解題">解題</a>
+      <ul>
+        <li><a href="#某人都沒中的機率">某人都沒中的機率</a></li>
+        <li><a href="#40個人裡有人沒中的機率">40個人裡有人沒中的機率</a></li>
+      </ul>
+    </li>
+    <li><a href="#小評">小評</a></li>
   </ul>
 </nav></div>
     </div>

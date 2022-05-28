@@ -224,6 +224,237 @@
   <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/post/birthday_paradox/" itemprop="url">
+        生日悖論 Birthday Paradox
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2021-05-27">
+    2021-05-27
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">610 字 ~2分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="生日悖論-birthday-paradox">生日悖論 Birthday Paradox</h1>
+<h2 id="命題">命題</h2>
+<p>多少幾人的教室，有超過一半的概率會有其中兩個人同一天生日？<br>
+直覺上的答案與真實值也許跟妳想的不一樣。</p>
+<h2 id="基本假設">基本假設</h2>
+<ul>
+<li>一年365天</li>
+<li>每天生日概率相等</li>
+</ul>
+<h2 id="解題">解題</h2>
+<ul>
+<li>
+<p>兩個人同一天生日的機率 $1/365 \times 1/365 = 0.00000750609$</p>
+</li>
+<li>
+<p>N個人都沒有人同一天生日的機率</p>
+<ol>
+<li>N&gt;=365 必定有兩個人在同一天生日</li>
+<li>N&lt;365 <br>
+$\Pi_{n=1}^N(\frac{365-n}{365}) = \frac{365}{365}\times\frac{365-1}{365}\times&hellip;\times\frac{365-N}{365}$</li>
+</ol>
+</li>
+</ul>
+<p>`</p>
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://squarecho.github.io/post/birthday_paradox/" rel="contents">
+      閱讀全文 &raquo;
+    </a>
+    </div>
+    
+    <footer class="post-footer"><div class="post-eof"></div></footer>
+  </article>
+
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/post/guaranteed-strengthen/" itemprop="url">
+        常見遊戲道具強化機制-保底強化模型
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2021-03-16">
+    2021-03-16
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">388 字 ~1分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="常見遊戲道具強化機制-保底強化模型">常見遊戲道具強化機制-保底強化模型</h1>
+<h2 id="命題">命題</h2>
+<p>給定固定強化成功率x與固定保底值T，求成功強化的期望次數</p>
+<h3 id="保底強化模型規則">保底強化模型規則</h3>
+<ol>
+<li>強化成功率 $\in [0,1)$</li>
+<li>強化失敗幸運值+1</li>
+<li>幸運值超過保底值強化成功</li>
+</ol>
+<h2 id="解題">解題</h2>
+<h3 id="無保底模型">無保底模型</h3>
+<p>$E_v = \frac{1}{x}$</p>
+<h4 id="證明">證明</h4>
+<p>$$ \begin{align}
+E_v &amp;= x + 2x(1-x)+&hellip;+nx(1-x)^{n-1} \cr
+(1-x)E_v &amp;= x(1-x)+2x(1-x)^2+&hellip;+(n-1)x(1-x)^{n-1}\quad\quad\quad\quad\quad \cr
+xE_v &amp;= x+x(1-x)+2x(1-x)^2+&hellip;= x \frac{1}{1-(1-x)} = 1\cr 
+E_v &amp;= \frac{1}{x} \cr
+\end{align} $$</p>
+<h3 id="保底模型">保底模型</h3>
+<p>期望值=T次內期望值+T*(1-T次內成功機率)</p>
+<p>$E_v=\frac{1-(1-x)^T (1+Tx)}{x}+T(1-x)^T$</p>
+<p>`</p>
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://squarecho.github.io/post/guaranteed-strengthen/" rel="contents">
+      閱讀全文 &raquo;
+    </a>
+    </div>
+    
+    <footer class="post-footer"><div class="post-eof"></div></footer>
+  </article>
+
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/post/lotter_paradox/" itemprop="url">
+        尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2021-03-12">
+    2021-03-12
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">282 字 ~1分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="尾牙時抽100份獎項給40人竟然三年都有人沒抽到">尾牙時,抽100份獎項給40人,竟然三年都有人沒抽到</h1>
+<p>公司尾牙共計要發出100份獎項，參與抽獎的人數共40人，可重複中獎。有人沒拿到獎項的機率是多少？</p>
+<h2 id="解題">解題</h2>
+<h3 id="某人都沒中的機率">某人都沒中的機率</h3>
+<p>$(39/40)^{100} \approx 7.951$%</p>
+<h3 id="40個人裡有人沒中的機率">40個人裡有人沒中的機率</h3>
+<h4 id="數學模型">數學模型</h4>
+<p>根據數學排容原理：有一個沒中的機率－有兩人沒中的機率＋有三人沒中的機率．．．</p>
+<p>$C_1^{40}(39/40)^{100}-C_2^{40}(38/40)^{100}+C_3^{40}(37/40)^{100}&hellip;C_{39}^{40}(1/40)^{100} \approx 97.686$%</p>
+<p>`</p>
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://squarecho.github.io/post/lotter_paradox/" rel="contents">
+      閱讀全文 &raquo;
+    </a>
+    </div>
+    
+    <footer class="post-footer"><div class="post-eof"></div></footer>
+  </article>
+
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
         <a class="post-title-link" href="https://squarecho.github.io/post/copy/" itemprop="url">
         Golang 拷貝技術整理
         </a>
@@ -289,7 +520,7 @@
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
         <a class="post-title-link" href="https://squarecho.github.io/post/mathlove/" itemprop="url">
-        愛的方城市 LOVE Formula
+        愛的方程式 LOVE Formula
         </a>
       </h1>
       <div class="post-meta">
@@ -332,8 +563,8 @@
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <h1 id="愛的方城市-love-formula">愛的方城市 LOVE Formula</h1>
-<p><img src="https://squarecho.github.io/assets/img/love.png" alt="png" title="png"></p>
+    <h1 id="愛的方程式-love-formula">愛的方程式 LOVE Formula</h1>
+<p><img src="https://squarecho.github.io/assets/img/love.png" alt="love.png" title="LOVE Formula"></p>
 <h2 id="代號意義">代號意義</h2>
 <table>
 <thead>
@@ -615,7 +846,7 @@
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="https://squarecho.github.io/post/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">日誌</span>
       </a>
     </div>
@@ -632,7 +863,7 @@
     <div class="site-state-item site-state-tags">
         <a href="https://squarecho.github.io/tags/">
          
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">5</span>
         
         <span class="site-state-item-name">標籤</span>
         </a>

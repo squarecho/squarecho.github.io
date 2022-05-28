@@ -49,13 +49,44 @@
     </item>
     
     <item>
-      <title>愛的方城市 LOVE Formula</title>
+      <title>常見遊戲道具強化機制-保底強化模型</title>
+      <link>https://squarecho.github.io/post/guaranteed-strengthen/</link>
+      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://squarecho.github.io/post/guaranteed-strengthen/</guid>
+      <description>&lt;h1 id=&#34;常見遊戲道具強化機制-保底強化模型&#34;&gt;常見遊戲道具強化機制-保底強化模型&lt;/h1&gt;
+&lt;h2 id=&#34;命題&#34;&gt;命題&lt;/h2&gt;
+&lt;p&gt;給定固定強化成功率x與固定保底值T，求成功強化的期望次數&lt;/p&gt;
+&lt;h3 id=&#34;保底強化模型規則&#34;&gt;保底強化模型規則&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;強化成功率 $\in [0,1)$&lt;/li&gt;
+&lt;li&gt;強化失敗幸運值+1&lt;/li&gt;
+&lt;li&gt;幸運值超過保底值強化成功&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;解題&#34;&gt;解題&lt;/h2&gt;
+&lt;h3 id=&#34;無保底模型&#34;&gt;無保底模型&lt;/h3&gt;
+&lt;p&gt;$E_v = \frac{1}{x}$&lt;/p&gt;
+&lt;h4 id=&#34;證明&#34;&gt;證明&lt;/h4&gt;
+&lt;p&gt;$$ \begin{align}
+E_v &amp;amp;= x + 2x(1-x)+&amp;hellip;+nx(1-x)^{n-1} \cr
+(1-x)E_v &amp;amp;= x(1-x)+2x(1-x)^2+&amp;hellip;+(n-1)x(1-x)^{n-1}\quad\quad\quad\quad\quad \cr
+xE_v &amp;amp;= x+x(1-x)+2x(1-x)^2+&amp;hellip;= x \frac{1}{1-(1-x)} = 1\cr 
+E_v &amp;amp;= \frac{1}{x} \cr
+\end{align} $$&lt;/p&gt;
+&lt;h3 id=&#34;保底模型&#34;&gt;保底模型&lt;/h3&gt;
+&lt;p&gt;期望值=T次內期望值+T*(1-T次內成功機率)&lt;/p&gt;
+&lt;p&gt;$E_v=\frac{1-(1-x)^T (1+Tx)}{x}+T(1-x)^T$&lt;/p&gt;
+&lt;p&gt;`&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>愛的方程式 LOVE Formula</title>
       <link>https://squarecho.github.io/post/mathlove/</link>
       <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://squarecho.github.io/post/mathlove/</guid>
-      <description>&lt;h1 id=&#34;愛的方城市-love-formula&#34;&gt;愛的方城市 LOVE Formula&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;https://squarecho.github.io/assets/img/love.png&#34; alt=&#34;png&#34; title=&#34;png&#34;&gt;&lt;/p&gt;
+      <description>&lt;h1 id=&#34;愛的方程式-love-formula&#34;&gt;愛的方程式 LOVE Formula&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://squarecho.github.io/assets/img/love.png&#34; alt=&#34;love.png&#34; title=&#34;LOVE Formula&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;代號意義&#34;&gt;代號意義&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;

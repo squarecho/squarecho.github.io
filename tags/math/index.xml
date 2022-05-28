@@ -2,52 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>math on 遊戲數學平方</title>
-    <link>https://squarecho.github.io/categories/math/</link>
+    <link>https://squarecho.github.io/tags/math/</link>
     <description>Recent content in math on 遊戲數學平方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Thu, 03 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/categories/math/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>公正雜湊驗證機制</title>
-      <link>https://squarecho.github.io/post/provably_fair/</link>
-      <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://squarecho.github.io/post/provably_fair/</guid>
-      <description>&lt;h1 id=&#34;公正雜湊驗證機制&#34;&gt;公正雜湊驗證機制&lt;/h1&gt;
-&lt;p&gt;根據雜湊不可逆原理達成的玩家信任機制。&lt;/p&gt;
-&lt;h2 id=&#34;機制概述&#34;&gt;機制概述&lt;/h2&gt;
-&lt;p&gt;根據 &lt;strong&gt;伺服器種子(Server_Seed)&lt;/strong&gt; 與 &lt;strong&gt;玩家種子(Client_Seed)&lt;/strong&gt; 產生雜湊字串(SHA512)，根據其字串上取得該遊戲結果。&lt;br&gt;
-並於是前給予玩家 &lt;strong&gt;已經雜湊的伺服器種子(Hashed_Server_Seed)&lt;/strong&gt; ，使玩家可以事後與 &lt;strong&gt;伺服器種子(Server_Seed)&lt;/strong&gt; 做雜湊驗證，讓玩家確保沒有作弊的可能性。&lt;/p&gt;
-&lt;h2 id=&#34;驗證需求&#34;&gt;驗證需求&lt;/h2&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;欄位&lt;/th&gt;
-&lt;th&gt;意義&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Hashed_Server_Seed&lt;/td&gt;
-&lt;td&gt;於下注前給玩家&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Server_Seed&lt;/td&gt;
-&lt;td&gt;玩家更換 Client Seed 的時候再給玩家&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Client_Seed&lt;/td&gt;
-&lt;td&gt;玩家可以自行更新&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Nonce&lt;/td&gt;
-&lt;td&gt;隨下注次數增加(從&amp;quot;1&amp;quot;開始)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;`&lt;/p&gt;</description>
-    </item>
-    
+    <lastBuildDate>Thu, 27 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/tags/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>生日悖論 Birthday Paradox</title>
       <link>https://squarecho.github.io/post/birthday_paradox/</link>
@@ -126,49 +85,6 @@ E_v &amp;amp;= \frac{1}{x} \cr
 &lt;h4 id=&#34;數學模型&#34;&gt;數學模型&lt;/h4&gt;
 &lt;p&gt;根據數學排容原理：有一個沒中的機率－有兩人沒中的機率＋有三人沒中的機率．．．&lt;/p&gt;
 &lt;p&gt;$C_1^{40}(39/40)^{100}-C_2^{40}(38/40)^{100}+C_3^{40}(37/40)^{100}&amp;hellip;C_{39}^{40}(1/40)^{100} \approx 97.686$%&lt;/p&gt;
-&lt;p&gt;`&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>愛的方程式 LOVE Formula</title>
-      <link>https://squarecho.github.io/post/mathlove/</link>
-      <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://squarecho.github.io/post/mathlove/</guid>
-      <description>&lt;h1 id=&#34;愛的方程式-love-formula&#34;&gt;愛的方程式 LOVE Formula&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;https://squarecho.github.io/assets/img/love.png&#34; alt=&#34;love.png&#34; title=&#34;LOVE Formula&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;代號意義&#34;&gt;代號意義&lt;/h2&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;代號&lt;/th&gt;
-&lt;th&gt;公式&lt;/th&gt;
-&lt;th&gt;意義&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;L&lt;/td&gt;
-&lt;td&gt;$y = \frac{1}{x}$&lt;/td&gt;
-&lt;td&gt;倒數：互願成為對方的倒影&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;O&lt;/td&gt;
-&lt;td&gt;$(x-15)^2+(y-5)^2=25$&lt;/td&gt;
-&lt;td&gt;圈：手拉手總是圍成一個圈&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;V&lt;/td&gt;
-&lt;td&gt;$y = ｜-2(x-25) ｜$&lt;/td&gt;
-&lt;td&gt;絕對值：願與妳永在正象限&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;E&lt;/td&gt;
-&lt;td&gt;$y = 7\sin(1.23y-4.4)+38$&lt;/td&gt;
-&lt;td&gt;波動：兩人一起時總是心情蕩漾&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
 &lt;p&gt;`&lt;/p&gt;</description>
     </item>
     
