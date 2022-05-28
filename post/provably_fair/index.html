@@ -170,16 +170,16 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">閱讀:</span>
-<span class="leancloud-visitors-count">312 字 ~1分鐘</span>
+<span class="leancloud-visitors-count">744 字 ~2分鐘</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
       <h1 id="公正雜湊驗證機制">公正雜湊驗證機制</h1>
-<p>參考競品: Bitsler provably-fair
-<a href="https://www.bitsler.com/en/provably-fair/seeds">https://www.bitsler.com/en/provably-fair/seeds</a></p>
-<h2 id="技術簡述">技術簡述</h2>
-<p>根據server seed與client seed產生對應的hash鏈，隨機數皆於鏈上取得，取得方式有公告且server seed有事先給玩家雜湊過的值可自行驗證。</p>
+<p>根據雜湊不可逆原理達成的玩家信任機制。</p>
+<h2 id="機制概述">機制概述</h2>
+<p>根據 <strong>伺服器種子(Server_Seed)</strong> 與 <strong>玩家種子(Client_Seed)</strong> 產生雜湊字串(SHA512)，根據其字串上取得該遊戲結果。<br>
+並於是前給予玩家 <strong>已經雜湊的伺服器種子(Hashed_Server_Seed)</strong> ，使玩家可以事後與 <strong>伺服器種子(Server_Seed)</strong> 做雜湊驗證，讓玩家確保沒有作弊的可能性。</p>
 <h2 id="驗證需求">驗證需求</h2>
 <table>
 <thead>
@@ -190,34 +190,44 @@
 </thead>
 <tbody>
 <tr>
-<td>Server Seed (hashed)</td>
+<td>Hashed_Server_Seed</td>
 <td>於下注前給玩家</td>
 </tr>
 <tr>
-<td>Server Seed (revealed)</td>
+<td>Server_Seed</td>
 <td>玩家更換 Client Seed 的時候再給玩家</td>
 </tr>
 <tr>
-<td>Client Seed</td>
+<td>Client_Seed</td>
 <td>玩家可以自行更新</td>
 </tr>
 <tr>
-<td>Last/specific nonce</td>
-<td>隨下注次數增加</td>
+<td>Nonce</td>
+<td>隨下注次數增加(從&quot;1&quot;開始)</td>
 </tr>
 </tbody>
 </table>
+<p>`</p>
+<p>`</p>
+<h2 id="參考競品-bitsler-provably-fair">參考競品: Bitsler provably-fair</h2>
+<p><a href="https://www.bitsler.com/en/provably-fair">https://www.bitsler.com/en/provably-fair</a></p>
 <h2 id="技術細節">技術細節</h2>
 <ol>
-<li>Server Seed的Hash使用 SHA256</li>
-<li>公正的隨機數產生由 $clientSeed $nonce $serverSeed 產生的Hash字串中取得</li>
+<li>Hashed_Server_Seed Server_Seed 的雜湊函數使用 SHA256</li>
+<li>取得遊戲結果的雜湊字串 的雜湊函數使用 SHA512</li>
+<li>取得遊戲結果的雜湊字串 由 Server_Seed, Client_Seed, Nonce這三個字串決定</li>
+<li>雜湊字串如何計算成遊戲結果的邏輯會公告</li>
 </ol>
 <h2 id="玩家驗證重點">玩家驗證重點</h2>
 <ol>
-<li>server事先給的Hashed-ServerSeed與事後給的serverSeed是否符合 SHA256的驗證</li>
+<li>遊戲項目事先給予的Hashed_Server_Seed與事後Server_Seed是否符合SHA256的驗證</li>
+<li>是否可以根據SServer_Seed, Client_Seed, Nonce正確計算出遊戲結果</li>
 </ol>
-<h2 id="根據clientseed-nonce-serverseed所產生的公正隨機數邏輯">根據$clientSeed $nonce $serverSeed所產生的公正隨機數邏輯</h2>
+<h2 id="雜湊字串如何計算成遊戲結果的邏輯">雜湊字串如何計算成遊戲結果的邏輯</h2>
+<h3 id="dice遊戲展示">Dice遊戲展示</h3>
+<h4 id="公告程式碼php">公告程式碼(PHP)</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$seed<span style="color:#f92672">=</span><span style="color:#a6e22e">hash_hmac</span>(<span style="color:#e6db74">&#39;sha512&#39;</span>,$clientSeed <span style="color:#f92672">.</span><span style="color:#e6db74">&#39;,&#39;</span><span style="color:#f92672">.</span> $nonce, $serverSeed);
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>$offset<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">do</span>{
@@ -226,7 +236,29 @@
 </span></span><span style="display:flex;"><span>  $offset<span style="color:#f92672">+=</span><span style="color:#ae81ff">5</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span>($number <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">999999</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>$luckyNumber <span style="color:#f92672">=</span> ($number <span style="color:#f92672">%</span> <span style="color:#ae81ff">10000</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">100</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> $luckyNumber;
+</span></span></code></pre></div><h4 id="hash_hmac">hash_hmac</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$seed<span style="color:#f92672">=</span><span style="color:#a6e22e">hash_hmac</span>(<span style="color:#e6db74">&#39;sha512&#39;</span>,$clientSeed <span style="color:#f92672">.</span><span style="color:#e6db74">&#39;,&#39;</span><span style="color:#f92672">.</span> $nonce, $serverSeed);
+</span></span></code></pre></div><p>seed為取得遊戲結果的雜湊字串<br>
+其為一十六進制的制字串,其每個字符的值域為[0,1,2,&hellip;e,f]</p>
+<h4 id="do-while決定number">do while決定number</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$offset<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">do</span>{
+</span></span><span style="display:flex;"><span>  $number<span style="color:#f92672">=</span><span style="color:#a6e22e">substr</span>($seed,$offset,<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>  $number<span style="color:#f92672">=</span><span style="color:#a6e22e">hexdec</span>($number);
+</span></span><span style="display:flex;"><span>  $offset<span style="color:#f92672">+=</span><span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span>($number <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">999999</span>);
+</span></span></code></pre></div><p>每五個字符取一單位，故每個單位的值域為$[0,16^5)$<br>
+為了在十進制可以無偏誤(unbias)，故 number &gt; 999999時，取下五個字符為單位<br>
+SHA512長度共128個字符，若取完所有單位後皆 number &gt; 999999，則 number會視為預設值0，<br>
+取完所有單位的概率極低
+$(\frac{16^5-999999}{16^5})^{rounddown(128/5)} \approx 4.4235346e-34$，故可視其無顯著影響。</p>
+<h4 id="轉換遊戲結果並回傳">轉換遊戲結果並回傳</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$luckyNumber <span style="color:#f92672">=</span> ($number <span style="color:#f92672">%</span> <span style="color:#ae81ff">10000</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">100</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> $luckyNumber;
 </span></span></code></pre></div>
     </div>
@@ -378,11 +410,16 @@
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
-    <li><a href="#技術簡述">技術簡述</a></li>
+    <li><a href="#機制概述">機制概述</a></li>
     <li><a href="#驗證需求">驗證需求</a></li>
+    <li><a href="#參考競品-bitsler-provably-fair">參考競品: Bitsler provably-fair</a></li>
     <li><a href="#技術細節">技術細節</a></li>
     <li><a href="#玩家驗證重點">玩家驗證重點</a></li>
-    <li><a href="#根據clientseed-nonce-serverseed所產生的公正隨機數邏輯">根據$clientSeed $nonce $serverSeed所產生的公正隨機數邏輯</a></li>
+    <li><a href="#雜湊字串如何計算成遊戲結果的邏輯">雜湊字串如何計算成遊戲結果的邏輯</a>
+      <ul>
+        <li><a href="#dice遊戲展示">Dice遊戲展示</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div>

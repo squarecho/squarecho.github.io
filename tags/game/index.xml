@@ -13,7 +13,39 @@
       <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://squarecho.github.io/post/provably_fair/</guid>
-      <description>公正雜湊驗證機制 參考競品: Bitsler provably-fair https://www.bitsler.com/en/provably-fair/seeds 技術簡述 根據server seed與client seed產生對應的hash鏈，隨機數皆於鏈上取得，取得方式有公</description>
+      <description>&lt;h1 id=&#34;公正雜湊驗證機制&#34;&gt;公正雜湊驗證機制&lt;/h1&gt;
+&lt;p&gt;根據雜湊不可逆原理達成的玩家信任機制。&lt;/p&gt;
+&lt;h2 id=&#34;機制概述&#34;&gt;機制概述&lt;/h2&gt;
+&lt;p&gt;根據 &lt;strong&gt;伺服器種子(Server_Seed)&lt;/strong&gt; 與 &lt;strong&gt;玩家種子(Client_Seed)&lt;/strong&gt; 產生雜湊字串(SHA512)，根據其字串上取得該遊戲結果。&lt;br&gt;
+並於是前給予玩家 &lt;strong&gt;已經雜湊的伺服器種子(Hashed_Server_Seed)&lt;/strong&gt; ，使玩家可以事後與 &lt;strong&gt;伺服器種子(Server_Seed)&lt;/strong&gt; 做雜湊驗證，讓玩家確保沒有作弊的可能性。&lt;/p&gt;
+&lt;h2 id=&#34;驗證需求&#34;&gt;驗證需求&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;欄位&lt;/th&gt;
+&lt;th&gt;意義&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Hashed_Server_Seed&lt;/td&gt;
+&lt;td&gt;於下注前給玩家&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Server_Seed&lt;/td&gt;
+&lt;td&gt;玩家更換 Client Seed 的時候再給玩家&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Client_Seed&lt;/td&gt;
+&lt;td&gt;玩家可以自行更新&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Nonce&lt;/td&gt;
+&lt;td&gt;隨下注次數增加(從&amp;quot;1&amp;quot;開始)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;`&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -22,7 +54,63 @@
       <pubDate>Fri, 03 Feb 2017 00:00:00 +0000</pubDate>
       
       <guid>https://squarecho.github.io/post/rummi/</guid>
-      <description>Rummi 拉密分析 順或群 沒有百搭 一張百搭 兩張百搭 總和 三順 44 92 52 188 四順 40 124 132 296 五順 36 148 233 417 三群 52 78 0 130 四群 13 52 78 143 總和 185 494 495 1174 i屬於I [1,2,3,&amp;hellip;,53] j屬於J [1,2,&amp;hellip;]</description>
+      <description>&lt;h1 id=&#34;rummi-拉密分析&#34;&gt;Rummi 拉密分析&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;順或群&lt;/th&gt;
+&lt;th&gt;沒有百搭&lt;/th&gt;
+&lt;th&gt;一張百搭&lt;/th&gt;
+&lt;th&gt;兩張百搭&lt;/th&gt;
+&lt;th&gt;總和&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;三順&lt;/td&gt;
+&lt;td&gt;44&lt;/td&gt;
+&lt;td&gt;92&lt;/td&gt;
+&lt;td&gt;52&lt;/td&gt;
+&lt;td&gt;188&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;四順&lt;/td&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;td&gt;124&lt;/td&gt;
+&lt;td&gt;132&lt;/td&gt;
+&lt;td&gt;296&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;五順&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;148&lt;/td&gt;
+&lt;td&gt;233&lt;/td&gt;
+&lt;td&gt;417&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;三群&lt;/td&gt;
+&lt;td&gt;52&lt;/td&gt;
+&lt;td&gt;78&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;130&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;四群&lt;/td&gt;
+&lt;td&gt;13&lt;/td&gt;
+&lt;td&gt;52&lt;/td&gt;
+&lt;td&gt;78&lt;/td&gt;
+&lt;td&gt;143&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;總和&lt;/td&gt;
+&lt;td&gt;185&lt;/td&gt;
+&lt;td&gt;494&lt;/td&gt;
+&lt;td&gt;495&lt;/td&gt;
+&lt;td&gt;1174&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;`&lt;/p&gt;</description>
     </item>
     
   </channel>
