@@ -6,7 +6,85 @@
     <description>Recent content in math on 遊戲數學平方</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Sat, 28 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/categories/math/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://squarecho.github.io/categories/math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title> 遊戲動態RTP調整 - 重擲控制 Reroll</title>
+      <link>https://squarecho.github.io/post/reroll-mech/</link>
+      <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://squarecho.github.io/post/reroll-mech/</guid>
+      <description>&lt;h1 id=&#34;遊戲動態rtp調整---重擲控制-reroll&#34;&gt;遊戲動態RTP調整 - 重擲控制 Reroll&lt;/h1&gt;
+&lt;p&gt;固定RTP玩法的遊戲，藉由&lt;strong&gt;重擲控制&lt;/strong&gt;可變成可動態調整RTP的遊戲。&lt;/p&gt;
+
+&lt;pre class=&#34;mermaid&#34; align=&#34;center&#34;&gt;
+graph LR
+A[bRTP=95%]--&gt;B(重擲RTP控制)--&gt;C[70%&lt;gameRTP&lt;120%]
+&lt;/pre&gt;
+&lt;h2 id=&#34;原理闡述&#34;&gt;原理闡述&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;若要降低RTP時，在其&lt;strong&gt;中獎&lt;/strong&gt;時有概率重擲其遊戲結果&lt;/li&gt;
+&lt;li&gt;若要上升RTP時，在其&lt;strong&gt;未中獎&lt;/strong&gt;時有概率重擲其遊戲結果&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;數學代號&#34;&gt;數學代號&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名稱&lt;/th&gt;
+&lt;th&gt;英文&lt;/th&gt;
+&lt;th&gt;代號&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;原生RTP&lt;/td&gt;
+&lt;td&gt;BasisRTP&lt;/td&gt;
+&lt;td&gt;bRTP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;原生中獎率&lt;/td&gt;
+&lt;td&gt;BasisHit&lt;/td&gt;
+&lt;td&gt;bHit&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;重擲觸發率&lt;/td&gt;
+&lt;td&gt;RerollRate&lt;/td&gt;
+&lt;td&gt;r&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;等效RTP&lt;/td&gt;
+&lt;td&gt;EquivalRTP&lt;/td&gt;
+&lt;td&gt;eRTP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;等效中獎率&lt;/td&gt;
+&lt;td&gt;EquivalHit&lt;/td&gt;
+&lt;td&gt;eHit&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;`&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>博奕遊戲槓桿規則 Leverage Rule</title>
+      <link>https://squarecho.github.io/post/leverage-rule/</link>
+      <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://squarecho.github.io/post/leverage-rule/</guid>
+      <description>&lt;h1 id=&#34;博奕遊戲槓桿規則-leverage-rule&#34;&gt;博奕遊戲槓桿規則 Leverage Rule&lt;/h1&gt;
+&lt;p&gt;包含&lt;strong&gt;以小博大&lt;/strong&gt;與&lt;strong&gt;不夠賠&lt;/strong&gt;的計算分析&lt;/p&gt;
+&lt;h2 id=&#34;天條&#34;&gt;天條&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;以小博大-每個人最多贏本身攜帶的金額&lt;/li&gt;
+&lt;li&gt;不夠賠-每個人最多輸本身攜帶的金額&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一般化複數玩家贏錢且複數玩家輸錢&#34;&gt;一般化(複數玩家贏錢且複數玩家輸錢)&lt;/h2&gt;
+&lt;h3 id=&#34;實作邏輯&#34;&gt;實作邏輯&lt;/h3&gt;
+&lt;p&gt;總輸分 = 所有觸發不夠賠的輸家攜帶金額 + 正常輸家輸的金額&lt;br&gt;
+總贏分 = 所有觸發以小搏大的贏家攜帶金額 + 正常贏家贏的金額&lt;br&gt;
+`&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>公正雜湊驗證機制</title>
       <link>https://squarecho.github.io/post/provably_fair/</link>

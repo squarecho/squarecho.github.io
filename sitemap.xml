@@ -1,6 +1,46 @@
 <search>
     
      <entry>
+        <title> 遊戲動態RTP調整 - 重擲控制 Reroll</title>
+        <url>https://squarecho.github.io/post/reroll-mech/</url>
+        <categories>
+          <category>math</category>
+        </categories>
+        <tags>
+          <tag>game</tag>
+        </tags>
+        <content type="html"> 遊戲動態RTP調整 - 重擲控制 Reroll 固定RTP玩法的遊戲，藉由重擲控制可變成可動態調整RTP的遊戲。
+graph LRA[bRTP=95%]--B(重擲RTP控制)--C[70%原理闡述  若要降低RTP時，在其中獎時有概率重擲其遊戲結果 若要上升RTP時，在其未中獎時有概率重擲其遊戲結果  數學代號    名稱 英文 代號     原生RTP BasisRTP bRTP   原生中獎率 BasisHit bHit   重擲觸發率 RerollRate r   等效RTP EquivalRTP eRTP   等效中獎率 EquivalHit eHit    `
+`
+降低RTP 示意展示 graph LRA[bRTP=95%,bHit=30%]--B{玩}--有中獎--C--E{概率性重擲}B--未中獎--DE--觸發--F{玩,RTP=95%}E--未觸發--C 等效RTP公式 $$ 有中獎觸發重擲的RTP : bHit \times r \times bRTP \ 有中獎未觸發重擲的RTP : bHit \times (1-r) \times \frac{bRTP}{bHit} \= (1-r) \times bRTP \ eRTP = bHit \times r \times bRTP &#43; (1-r) \times bRTP \ = bRTP \times (bHit \times r&#43;1 - r) $$
+等效中獎率公式 $eHit = bHit \times r \times bHit$
+公式總結    名稱 公式     等效RTP公式 $bRTP \times (1&#43;bHit \times r - r)$   等效中獎率公式 $bHit \times r \times bHit$   最小RTP $bHit \times bRTP$   最小中獎率 $bHit \times bHit$   重擲觸發率 $\frac{bRTP-eRTP}{(1-bHit)\times bRTP}$    上升RTP 示意展示 graph LRA[bRTP=95%,bHit=30%]--B{玩}--有中獎--CB--未中獎--D--E{概率性重擲}E--觸發--F{玩,RTP=95%}E--未觸發--D 等效RTP公式 $$ 有中獎的RTP : bHit \times \frac{bRTP}{bHit}\ 未中獎觸發重擲的RTP : (1-bHit) \times r \times bRTP \ eRTP = bRTP &#43; (1-bHit) \times r \times bRTP $$
+等效中獎率公式 $eHit = bHit &#43; (1-bHit) \times r \times bHit$
+公式總結    名稱 公式     等效RTP公式 $bRTP &#43; (1-bHit) \times r \times bRTP$   等效中獎率公式 $bHit &#43; (1-bHit) \times r \times bHit$   最大RTP $(2-bHit) \times bRTP$   最大中獎率 $(2-bHit) \times bHit$   重擲觸發率 $\frac{eRTP-bRTP}{(1-bHit)\times bRTP}$   </content>
+    </entry>
+    
+     <entry>
+        <title>博奕遊戲槓桿規則 Leverage Rule</title>
+        <url>https://squarecho.github.io/post/leverage-rule/</url>
+        <categories>
+          <category>math</category>
+        </categories>
+        <tags>
+          <tag>game</tag>
+        </tags>
+        <content type="html"> 博奕遊戲槓桿規則 Leverage Rule 包含以小博大與不夠賠的計算分析
+天條  以小博大-每個人最多贏本身攜帶的金額 不夠賠-每個人最多輸本身攜帶的金額  一般化(複數玩家贏錢且複數玩家輸錢) 實作邏輯 總輸分 = 所有觸發不夠賠的輸家攜帶金額 &#43; 正常輸家輸的金額
+總贏分 = 所有觸發以小搏大的贏家攜帶金額 &#43; 正常贏家贏的金額
+`
+`
+如果總輸分&amp;gt;總贏分: 每個輸家輸掉的金額等比例減少(少輸一些)
+輸掉的金額若是有小數無條件進位成整數
+如果總輸分&amp;lt;總贏分: 每個贏家贏得的金額等比例減少(少贏一些)
+贏取的金額若是有小數無條件捨去成整數
+程式碼分享 // CalLeverage 計算槓桿 // @param profit []int 槓桿前的收益 // @param balance []int 收益前的餘額 // @return afterProfit []int 槓桿前的收益 func CalLeverage(profit []int, balance []int) []int { 	if len(profit) != len(balance) { 	return profit 	} 	afterProfit := make([]int, len(profit)) 	copy(afterProfit, profit) 	loser := []int{} 	winner := []int{} 	// 計算輸贏家 	for i, p := range profit { 	if p &amp;lt; 0 { 	loser = append(loser, i) 	} 	if p &amp;gt; 0 { 	winner = append(winner, i) 	} 	} 	// 所有輸分 	allLose := 0 	for _, i := range loser { 	if balance[i]&#43;profit[i] &amp;lt; 0 { 	allLose &#43;= balance[i] 	afterProfit[i] = balance[i] * -1 	} else { 	allLose -= profit[i] 	} 	} 	// 所有贏分 	allWin := 0 	for _, i := range winner { 	if profit[i] &amp;gt;= balance[i] { 	afterProfit[i] = balance[i] 	allWin &#43;= balance[i] 	} else { 	allWin &#43;= profit[i] 	} 	}  	// 如果所有輸分大於所有贏分 	if allLose &amp;gt; allWin { 	ratio := float64(allWin) / float64(allLose) 	for _, i := range loser { 	afterProfit[i] = int(math.Floor(float64(afterProfit[i]) * ratio)) 	} 	} 	// 如果所有贏分大於所有輸分 	if allWin &amp;gt; allLose { 	ratio := float64(allLose) / float64(allWin) 	for _, i := range winner { 	afterProfit[i] = int(math.Ceil(float64(afterProfit[i]) * ratio)) 	} 	}  	return afterProfit } </content>
+    </entry>
+    
+     <entry>
         <title>公正雜湊驗證機制</title>
         <url>https://squarecho.github.io/post/provably_fair/</url>
         <categories>

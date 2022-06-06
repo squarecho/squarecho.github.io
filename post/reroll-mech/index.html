@@ -5,14 +5,14 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>常用工具連結 - 遊戲數學平方</title>
+  <title> 遊戲動態RTP調整 - 重擲控制 Reroll - 遊戲數學平方</title>
   
   <meta name="keywords" content="遊戲數學平方,團對,思考,筆記,技術,分享,Golang">
   
-  <meta property="og:title" content="常用工具連結">
+  <meta property="og:title" content=" 遊戲動態RTP調整 - 重擲控制 Reroll">
   <meta property="og:site_name" content="遊戲數學平方">
   <meta property="og:image" content="/assets/img/author.jpg">
-  <meta name="title" content="常用工具連結 - 遊戲數學平方" />
+  <meta name="title" content=" 遊戲動態RTP調整 - 重擲控制 Reroll - 遊戲數學平方" />
   
   <meta name="description" content="遊戲數學平方 | 部落格 | 遊戲 | 數學 | 後端 | Golang">
   <link rel="shortcut icon" href="https://squarecho.github.io/assets/img/logo.png" />
@@ -131,8 +131,8 @@
   <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://squarecho.github.io/post/toollink/" itemprop="url">
-          常用工具連結
+        <a class="post-title-link" href="https://squarecho.github.io/post/reroll-mech/" itemprop="url">
+           遊戲動態RTP調整 - 重擲控制 Reroll
         </a>
       </h1>
       <div class="post-meta">
@@ -141,8 +141,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">時間:</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-02-03">
-    2017-02-03
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2022-06-06">
+    2022-06-06
 </time>
 </span>
         
@@ -155,8 +155,8 @@
   <span class="post-meta-item-text">分類:</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://squarecho.github.io/categories/note" itemprop="url" rel="index">
-        <span itemprop="name">note</span>
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
       </a>
       &nbsp; 
     </span>
@@ -170,33 +170,168 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">閱讀:</span>
-<span class="leancloud-visitors-count">61 字 ~1分鐘</span>
+<span class="leancloud-visitors-count">626 字 ~2分鐘</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-      <h1 id="常用工具連結">常用工具連結</h1>
-<h2 id="數學作圖">數學作圖</h2>
-<p><a href="https://www.geogebra.org/">https://www.geogebra.org/</a><br>
-<a href="https://www.desmos.com/">https://www.desmos.com/  </a></p>
-<h1 id="2d作圖">2D作圖</h1>
-<p><a href="https://app.diagrams.net/">https://app.diagrams.net/</a><br>
-<a href="https://www.canva.com/">https://www.canva.com/</a></p>
-<h2 id="visa-匯率轉換">VISA 匯率轉換</h2>
-<p><a href="https://www.visa.com.tw/travel-with-visa/exchange-rate-calculator.html?fromCurr=TWD&amp;toCurr=SGD&amp;fee=0&amp;utcConvertedDate=&amp;exchangedate=03%2F21%2F2022&amp;submitButton=%E8%A8%88%E7%AE%97%E5%8C%AF%E7%8E%87">VISA 匯率轉換_TWDSGD</a><br>
-<a href="https://www.visa.com.tw/travel-with-visa/exchange-rate-calculator.html?fromCurr=SGD&amp;toCurr=TWD&amp;fee=0&amp;utcConvertedDate=&amp;exchangedate=03%2F21%2F2022&amp;submitButton=%E8%A8%88%E7%AE%97%E5%8C%AF%E7%8E%87">VISA 匯率轉換_SGDTWD</a></p>
+      <h1 id="遊戲動態rtp調整---重擲控制-reroll">遊戲動態RTP調整 - 重擲控制 Reroll</h1>
+<p>固定RTP玩法的遊戲，藉由<strong>重擲控制</strong>可變成可動態調整RTP的遊戲。</p>
+
+<pre class="mermaid" align="center">
+graph LR
+A[bRTP=95%]-->B(重擲RTP控制)-->C[70%<gameRTP<120%]
+</pre>
+<h2 id="原理闡述">原理闡述</h2>
+<ol>
+<li>若要降低RTP時，在其<strong>中獎</strong>時有概率重擲其遊戲結果</li>
+<li>若要上升RTP時，在其<strong>未中獎</strong>時有概率重擲其遊戲結果</li>
+</ol>
+<h2 id="數學代號">數學代號</h2>
+<table>
+<thead>
+<tr>
+<th>名稱</th>
+<th>英文</th>
+<th>代號</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原生RTP</td>
+<td>BasisRTP</td>
+<td>bRTP</td>
+</tr>
+<tr>
+<td>原生中獎率</td>
+<td>BasisHit</td>
+<td>bHit</td>
+</tr>
+<tr>
+<td>重擲觸發率</td>
+<td>RerollRate</td>
+<td>r</td>
+</tr>
+<tr>
+<td>等效RTP</td>
+<td>EquivalRTP</td>
+<td>eRTP</td>
+</tr>
+<tr>
+<td>等效中獎率</td>
+<td>EquivalHit</td>
+<td>eHit</td>
+</tr>
+</tbody>
+</table>
 <p>`</p>
 <p>`</p>
-<blockquote>
-<p>工欲善其事，必先利其器～</p>
-</blockquote>
+<h2 id="降低rtp">降低RTP</h2>
+<h3 id="示意展示">示意展示</h3>
+
+<pre class="mermaid" align="center">
+graph LR
+A[bRTP=95%,bHit=30%]-->B{玩}--有中獎-->C-->E{概率性重擲}
+B--未中獎-->D
+E--觸發-->F{玩,RTP=95%}
+E--未觸發-->C
+
+</pre>
+<h3 id="等效rtp公式">等效RTP公式</h3>
+<p>$$
+有中獎觸發重擲的RTP : bHit \times r \times bRTP \
+有中獎未觸發重擲的RTP : bHit \times (1-r) \times \frac{bRTP}{bHit} \=  (1-r) \times bRTP \
+eRTP = bHit \times r \times bRTP + (1-r) \times bRTP \ =  bRTP  \times (bHit \times r+1 - r)
+$$</p>
+<h3 id="等效中獎率公式">等效中獎率公式</h3>
+<p>$eHit = bHit \times r \times bHit$</p>
+<h3 id="公式總結">公式總結</h3>
+<table>
+<thead>
+<tr>
+<th>名稱</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>等效RTP公式</td>
+<td>$bRTP  \times (1+bHit \times r - r)$</td>
+</tr>
+<tr>
+<td>等效中獎率公式</td>
+<td>$bHit \times r \times bHit$</td>
+</tr>
+<tr>
+<td>最小RTP</td>
+<td>$bHit \times bRTP$</td>
+</tr>
+<tr>
+<td>最小中獎率</td>
+<td>$bHit \times bHit$</td>
+</tr>
+<tr>
+<td>重擲觸發率</td>
+<td>$\frac{bRTP-eRTP}{(1-bHit)\times bRTP}$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="上升rtp">上升RTP</h2>
+<h3 id="示意展示-1">示意展示</h3>
+
+<pre class="mermaid" align="center">
+graph LR
+A[bRTP=95%,bHit=30%]-->B{玩}--有中獎-->C
+B--未中獎-->D-->E{概率性重擲}
+E--觸發-->F{玩,RTP=95%}
+E--未觸發-->D
+</pre>
+<h3 id="等效rtp公式-1">等效RTP公式</h3>
+<p>$$
+有中獎的RTP : bHit \times \frac{bRTP}{bHit}\
+未中獎觸發重擲的RTP : (1-bHit) \times r \times bRTP \
+eRTP = bRTP + (1-bHit) \times r \times bRTP
+$$</p>
+<h3 id="等效中獎率公式-1">等效中獎率公式</h3>
+<p>$eHit = bHit + (1-bHit) \times r \times bHit$</p>
+<h3 id="公式總結-1">公式總結</h3>
+<table>
+<thead>
+<tr>
+<th>名稱</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>等效RTP公式</td>
+<td>$bRTP + (1-bHit) \times r \times bRTP$</td>
+</tr>
+<tr>
+<td>等效中獎率公式</td>
+<td>$bHit + (1-bHit) \times r \times bHit$</td>
+</tr>
+<tr>
+<td>最大RTP</td>
+<td>$(2-bHit) \times bRTP$</td>
+</tr>
+<tr>
+<td>最大中獎率</td>
+<td>$(2-bHit) \times bHit$</td>
+</tr>
+<tr>
+<td>重擲觸發率</td>
+<td>$\frac{eRTP-bRTP}{(1-bHit)\times bRTP}$</td>
+</tr>
+</tbody>
+</table>
     </div>
     <footer class="post-footer">
       
  
 <div class="post-tags">     
      
-    <a href="https://squarecho.github.io/tags/tool" rel="tag" title="tool">#tool#</a>
+    <a href="https://squarecho.github.io/tags/game" rel="tag" title="game">#game#</a>
     
 </div>
 
@@ -205,13 +340,13 @@
       <div class="post-nav">
     <div class="post-nav-next post-nav-item">
         
-        <a href="https://squarecho.github.io/post/rummi/" rel="next" title="Rummi 拉密分析">
-            <i class="fa fa-chevron-left"></i> Rummi 拉密分析
-        </a>
-        
     </div>
 
     <div class="post-nav-prev post-nav-item">
+        
+        <a href="https://squarecho.github.io/post/leverage-rule/" rel="prev" title="博奕遊戲槓桿規則 Leverage Rule">
+            博奕遊戲槓桿規則 Leverage Rule <i class="fa fa-chevron-right"></i>
+        </a>
         
     </div>
 </div>
@@ -333,11 +468,24 @@
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
   <ul>
-    <li><a href="#數學作圖">數學作圖</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#visa-匯率轉換">VISA 匯率轉換</a></li>
+    <li><a href="#原理闡述">原理闡述</a></li>
+    <li><a href="#數學代號">數學代號</a></li>
+    <li><a href="#降低rtp">降低RTP</a>
+      <ul>
+        <li><a href="#示意展示">示意展示</a></li>
+        <li><a href="#等效rtp公式">等效RTP公式</a></li>
+        <li><a href="#等效中獎率公式">等效中獎率公式</a></li>
+        <li><a href="#公式總結">公式總結</a></li>
+      </ul>
+    </li>
+    <li><a href="#上升rtp">上升RTP</a>
+      <ul>
+        <li><a href="#示意展示-1">示意展示</a></li>
+        <li><a href="#等效rtp公式-1">等效RTP公式</a></li>
+        <li><a href="#等效中獎率公式-1">等效中獎率公式</a></li>
+        <li><a href="#公式總結-1">公式總結</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div>

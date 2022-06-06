@@ -133,6 +133,184 @@
   <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/post/reroll-mech/" itemprop="url">
+         遊戲動態RTP調整 - 重擲控制 Reroll
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2022-06-06">
+    2022-06-06
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">626 字 ~2分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="遊戲動態rtp調整---重擲控制-reroll">遊戲動態RTP調整 - 重擲控制 Reroll</h1>
+<p>固定RTP玩法的遊戲，藉由<strong>重擲控制</strong>可變成可動態調整RTP的遊戲。</p>
+
+<pre class="mermaid" align="center">
+graph LR
+A[bRTP=95%]-->B(重擲RTP控制)-->C[70%<gameRTP<120%]
+</pre>
+<h2 id="原理闡述">原理闡述</h2>
+<ol>
+<li>若要降低RTP時，在其<strong>中獎</strong>時有概率重擲其遊戲結果</li>
+<li>若要上升RTP時，在其<strong>未中獎</strong>時有概率重擲其遊戲結果</li>
+</ol>
+<h2 id="數學代號">數學代號</h2>
+<table>
+<thead>
+<tr>
+<th>名稱</th>
+<th>英文</th>
+<th>代號</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原生RTP</td>
+<td>BasisRTP</td>
+<td>bRTP</td>
+</tr>
+<tr>
+<td>原生中獎率</td>
+<td>BasisHit</td>
+<td>bHit</td>
+</tr>
+<tr>
+<td>重擲觸發率</td>
+<td>RerollRate</td>
+<td>r</td>
+</tr>
+<tr>
+<td>等效RTP</td>
+<td>EquivalRTP</td>
+<td>eRTP</td>
+</tr>
+<tr>
+<td>等效中獎率</td>
+<td>EquivalHit</td>
+<td>eHit</td>
+</tr>
+</tbody>
+</table>
+<p>`</p>
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://squarecho.github.io/post/reroll-mech/" rel="contents">
+      閱讀全文 &raquo;
+    </a>
+    </div>
+    
+    <footer class="post-footer"><div class="post-eof"></div></footer>
+  </article>
+
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://squarecho.github.io/post/leverage-rule/" itemprop="url">
+        博奕遊戲槓桿規則 Leverage Rule
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2022-06-06">
+    2022-06-06
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
+        <span itemprop="name">math</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀:</span>
+<span class="leancloud-visitors-count">492 字 ~1分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="博奕遊戲槓桿規則-leverage-rule">博奕遊戲槓桿規則 Leverage Rule</h1>
+<p>包含<strong>以小博大</strong>與<strong>不夠賠</strong>的計算分析</p>
+<h2 id="天條">天條</h2>
+<ul>
+<li>以小博大-每個人最多贏本身攜帶的金額</li>
+<li>不夠賠-每個人最多輸本身攜帶的金額</li>
+</ul>
+<h2 id="一般化複數玩家贏錢且複數玩家輸錢">一般化(複數玩家贏錢且複數玩家輸錢)</h2>
+<h3 id="實作邏輯">實作邏輯</h3>
+<p>總輸分 = 所有觸發不夠賠的輸家攜帶金額 + 正常輸家輸的金額<br>
+總贏分 = 所有觸發以小搏大的贏家攜帶金額 + 正常贏家贏的金額<br>
+`</p>
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://squarecho.github.io/post/leverage-rule/" rel="contents">
+      閱讀全文 &raquo;
+    </a>
+    </div>
+    
+    <footer class="post-footer"><div class="post-eof"></div></footer>
+  </article>
+
+  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
         <a class="post-title-link" href="https://squarecho.github.io/post/provably_fair/" itemprop="url">
         公正雜湊驗證機制
         </a>
@@ -611,163 +789,6 @@ E_v &amp;= \frac{1}{x} \cr
     <footer class="post-footer"><div class="post-eof"></div></footer>
   </article>
 
-  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://squarecho.github.io/post/copy/" itemprop="url">
-        Golang 拷貝技術整理
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">時間:</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-07-03">
-    2019-07-03
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分類:</span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://squarecho.github.io/categories/code" itemprop="url" rel="index">
-        <span itemprop="name">code</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-       <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-eye"></i>
-</span>
-<span class="post-meta-item-text">閱讀:</span>
-<span class="leancloud-visitors-count">136 字 ~1分鐘</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    <h1 id="golang-拷貝技術整理">Golang 拷貝技術整理</h1>
-<h2 id="淺拷貝">淺拷貝</h2>
-<p>僅複製記憶體位置資訊,若修改則會連動修改</p>
-<h2 id="深拷貝">深拷貝</h2>
-<p>複製真實值,共會有兩份記憶體位置,若修改則分別修改</p>
-<p>`</p>
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://squarecho.github.io/post/copy/" rel="contents">
-      閱讀全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="https://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="https://squarecho.github.io/post/mathlove/" itemprop="url">
-        愛的方程式 LOVE Formula
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">時間:</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-07-03">
-    2018-07-03
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分類:</span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="https://squarecho.github.io/categories/math" itemprop="url" rel="index">
-        <span itemprop="name">math</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-       <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-eye"></i>
-</span>
-<span class="post-meta-item-text">閱讀:</span>
-<span class="leancloud-visitors-count">108 字 ~1分鐘</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    <h1 id="愛的方程式-love-formula">愛的方程式 LOVE Formula</h1>
-<p><img src="https://squarecho.github.io/assets/img/love.png" alt="love.png" title="LOVE Formula"></p>
-<h2 id="代號意義">代號意義</h2>
-<table>
-<thead>
-<tr>
-<th>代號</th>
-<th>公式</th>
-<th>意義</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>L</td>
-<td>$y = \frac{1}{x}$</td>
-<td>倒數：互願成為對方的倒影</td>
-</tr>
-<tr>
-<td>O</td>
-<td>$(x-15)^2+(y-5)^2=25$</td>
-<td>圈：手拉手總是圍成一個圈</td>
-</tr>
-<tr>
-<td>V</td>
-<td>$y = ｜-2(x-25) ｜$</td>
-<td>絕對值：願與妳永在正象限</td>
-</tr>
-<tr>
-<td>E</td>
-<td>$y = 7\sin(1.23y-4.4)+38$</td>
-<td>波動：兩人一起時總是心情蕩漾</td>
-</tr>
-</tbody>
-</table>
-<p>`</p>
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="https://squarecho.github.io/post/mathlove/" rel="contents">
-      閱讀全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
 </section>
 
 
@@ -834,7 +855,7 @@ E_v &amp;= \frac{1}{x} \cr
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="https://squarecho.github.io/post/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">日誌</span>
       </a>
     </div>
