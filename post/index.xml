@@ -18,7 +18,7 @@
 
 &lt;pre class=&#34;mermaid&#34; align=&#34;center&#34;&gt;
 graph LR
-A[bRTP=95%]--&gt;B(重擲RTP控制)--&gt;C[70%&lt;gameRTP&lt;120%]
+A[&#34;bRTP=95%&#34;]--&gt;B(&#34;重擲RTP控制&#34;)--&gt;C[&#34;gameRTP(70~130%)&#34;]
 &lt;/pre&gt;
 &lt;h2 id=&#34;原理闡述&#34;&gt;原理闡述&lt;/h2&gt;
 &lt;ol&gt;

@@ -10,7 +10,7 @@
           <tag>game</tag>
         </tags>
         <content type="html"> 遊戲動態RTP調整 - 重擲控制 Reroll 固定RTP玩法的遊戲，藉由重擲控制可變成可動態調整RTP的遊戲。
-graph LRA[bRTP=95%]--B(重擲RTP控制)--C[70%原理闡述  若要降低RTP時，在其中獎時有概率重擲其遊戲結果 若要上升RTP時，在其未中獎時有概率重擲其遊戲結果  數學代號    名稱 英文 代號     原生RTP BasisRTP bRTP   原生中獎率 BasisHit bHit   重擲觸發率 RerollRate r   等效RTP EquivalRTP eRTP   等效中獎率 EquivalHit eHit    `
+graph LRA[&#34;bRTP=95%&#34;]--B(&#34;重擲RTP控制&#34;)--C[&#34;gameRTP(70~130%)&#34;] 原理闡述  若要降低RTP時，在其中獎時有概率重擲其遊戲結果 若要上升RTP時，在其未中獎時有概率重擲其遊戲結果  數學代號    名稱 英文 代號     原生RTP BasisRTP bRTP   原生中獎率 BasisHit bHit   重擲觸發率 RerollRate r   等效RTP EquivalRTP eRTP   等效中獎率 EquivalHit eHit    `
 `
 降低RTP 示意展示 graph LRA[bRTP=95%,bHit=30%]--B{玩}--有中獎--C--E{概率性重擲}B--未中獎--DE--觸發--F{玩,RTP=95%}E--未觸發--C 等效RTP公式 $$ 有中獎觸發重擲的RTP : bHit \times r \times bRTP \ 有中獎未觸發重擲的RTP : bHit \times (1-r) \times \frac{bRTP}{bHit} \= (1-r) \times bRTP \ eRTP = bHit \times r \times bRTP &#43; (1-r) \times bRTP \ = bRTP \times (bHit \times r&#43;1 - r) $$
 等效中獎率公式 $eHit = bHit \times r \times bHit$
